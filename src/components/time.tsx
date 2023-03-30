@@ -47,7 +47,7 @@ function Night({time}: {time: Date}) {
 					{UATimeFormatter.format(time)}
 				</h2>
 
-				<p className={clsx('text-xs font-light', 'text-glow-sky-900 dark:text-glow-sky-500')}>in the uk</p>
+				<p className={clsx('text-xs font-light', 'text-glow-sky-900 dark:text-glow-sky-500')}>In Ukraine</p>
 			</div>
 		</div>
 	);

@@ -4,4 +4,46 @@
 
 body {
 	@apply bg-grid-neutral-200/40 bg-neutral-100 text-neutral-900 dark:bg-grid-neutral-800/50 dark:bg-neutral-900 dark:text-neutral-100;
+	/* background-color: #191825; */
 }
+
+/* Animations */
+@keyframes blink {
+	0% {
+	  opacity: 1;
+	}
+	50% {
+	  opacity: -0.1;
+	}
+	100% {
+	  opacity: 1;
+	}
+  }
+  
+  .animate-blink {
+	animation: blink 3s infinite;
+  }
+  
+  @keyframes shake {
+	0% {
+	  transform: translateX(1);
+	}
+	25% {
+	  transform: translateX(-4px);
+	}
+	50% {
+	  transform: translateX(1);
+	}
+	75% {
+	  transform: translateX(4px);
+	}
+	100% {
+	  transform: translateX(0);
+	}
+  }
+  
+  .animate-shake {
+	animation-timing-function: ease-in-out;
+	animation: shake 5s infinite;
+  }
+

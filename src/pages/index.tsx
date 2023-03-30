@@ -1,8 +1,8 @@
 import clsx from 'clsx';
-import type {GetStaticProps} from 'next';
+import type { GetStaticProps } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import {HiOutlineExternalLink} from 'react-icons/hi';
+import { HiOutlineExternalLink } from 'react-icons/hi';
 import {
 	SiAmazonaws,
 	SiBabel,
@@ -27,18 +27,20 @@ import {
 	SiWebstorm,
 	SiYarn,
 } from 'react-icons/si';
-import type {Data} from 'use-lanyard';
-import {ContactForm} from '../components/contact-form';
-import {CardHoverEffect, hoverClassName} from '../components/hover-card';
-import {Time} from '../components/time';
-import {useUpdatingLanyard} from '../hooks/lanyard';
+import type { Data } from 'use-lanyard';
+import { ContactForm } from '../components/contact-form';
+import { CardHoverEffect, hoverClassName } from '../components/hover-card';
+import { Time } from '../components/time';
+import { useUpdatingLanyard } from '../hooks/lanyard';
 import matrix from '../images/matrix.gif';
 import me from '../images/me.jpg';
 // import {getMapURL} from '../server/apple-maps';
-import {env} from '../server/env';
-import {getLanyard} from '../server/lanyard';
-import {age, discordId} from '../utils/constants';
-import {formatList} from '../utils/lists';
+import { env } from '../server/env';
+import { getLanyard } from '../server/lanyard';
+import { age, discordId } from '../utils/constants';
+import { formatList } from '../utils/lists';
+
+import { AboutMe } from '../components/about-me';
 
 export interface Props {
 	lanyard: Data;
@@ -54,44 +56,19 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 
 	return {
 		revalidate: 10,
-		props: {location, lanyard},
+		props: { location, lanyard },
 	};
 };
 
 export default function Home(props: Props) {
-	const {data: lanyard} = useUpdatingLanyard(discordId, props.lanyard);
+	const { data: lanyard } = useUpdatingLanyard(discordId, props.lanyard);
 
 	const status = lanyard.discord_status ?? 'offline';
 
 	return (
 		<main className="mx-auto grid max-w-3xl grid-cols-6 gap-6 px-6 pb-40 pt-16">
 			<div className="p-200 col-span-4 flex items-center justify-center overflow-hidden rounded-2xl bg-pink-200 dark:border-pink-500 dark:bg-pink-500/20 dark:backdrop-blur-2xl md:col-span-4 md:h-52">
-				<div className="flex flex-col items-center space-y-4 py-8 px-6 md:flex-row md:space-y-0 md:space-x-4">
-					<Image
-						src={me}
-						placeholder="blur"
-						height={96}
-						width={96}
-						className="h-24 w-24 rounded-full border border-pink-500 object-cover"
-						alt="Photo of me"
-					/>
-
-					<div className="space-y-1">
-						<h1 className="text-center font-title text-xl font-bold tracking-tighter text-pink-900 dark:text-pink-300 dark:text-glow-pink-500/50 md:text-left">
-							Alistair Smith
-						</h1>
-
-						<p className="text-center text-pink-800 dark:text-pink-300/95 dark:text-glow-pink-500/50 md:text-left">
-							{age} y/o full stack TypeScript engineer 🪄
-						</p>
-
-						<p className="text-center text-pink-800 dark:text-pink-300/80 dark:text-glow-pink-500/30 md:text-left">
-							<Link href="https://alistair.blog" target="_blank" rel="noopener noreferrer">
-								blog ↗️
-							</Link>
-						</p>
-					</div>
-				</div>
+				<AboutMe />
 			</div>
 
 			<CardHoverEffect className="col-span-2 h-full">
@@ -101,7 +78,6 @@ export default function Home(props: Props) {
 					rel="noopener noreferrer"
 					className={clsx(
 						'flex h-full items-center justify-center rounded-2xl bg-sky-500 text-4xl text-white',
-						hoverClassName,
 					)}
 				>
 					<span className="sr-only">Twitter</span>
@@ -111,28 +87,41 @@ export default function Home(props: Props) {
 				</Link>
 			</CardHoverEffect>
 
-			<div
-				className={clsx(
-					'col-span-3 flex h-52 items-center justify-center rounded-2xl text-4xl md:col-span-2',
-					{
-						online: 'bg-green-500 text-green-50',
-						idle: 'bg-orange-400 text-orange-50 ',
-						dnd: 'bg-red-500 text-red-50',
-						offline: 'bg-blurple text-white/90',
-					}[status],
-				)}
-			>
-				<div className="-rotate-[4deg] scale-[1] space-y-1 text-center md:scale-[1.2]">
-					<h2>
-						<SiDiscord className="inline" /> <span>{status}</span>
-					</h2>
-
-					<p className="text-base">
-						{lanyard.discord_user.username}#{lanyard.discord_user.discriminator}
-					</p>
+			{/* Discord Status Component */}
+			<CardHoverEffect className={clsx(
+				'col-span-2 h-full ',
+			)} >
+				<div
+					className={clsx(
+						'col-span-3 flex h-52 items-center justify-center rounded-2xl text-4xl md:col-span-2',
+						{
+							online: 'bg-green-500',
+							idle: 'bg-orange-400 text-orange-50 ',
+							dnd: 'bg-red-500 text-red-50',
+							offline: 'bg-blurple text-white/90',
+						}[status],
+					)}
+				>
+					<div className=" space-y-1 text-center md:scale-[1.2] transform-gpu transition group-hover:-rotate-[10deg] group-hover:scale-[1.3]">
+						<p className="text-base">
+							<h2>
+								<SiDiscord className="inline opacity-100 mb-1" /> {' '}
+								{lanyard.discord_user.username}#{lanyard.discord_user.discriminator}
+							</h2>
+						</p>
+						<p className={clsx(
+							{
+								online: 'bg-color-green-500 animate-blink',
+								idle: 'bg-orange-400 text-orange-50 animate-shake',
+								dnd: 'bg-red-500 text-red-50',
+								offline: 'bg-blurple text-white/90',
+							}[status],
+						)}>
+							{status}
+						</p>
+					</div>
 				</div>
-			</div>
-
+			</CardHoverEffect>
 			<Time />
 
 			<CardHoverEffect className="col-span-3 h-full md:col-span-3">
@@ -150,7 +139,7 @@ export default function Home(props: Props) {
 							src={matrix}
 							alt="The Matrix scrolling characters effect"
 							fill
-							style={{objectFit: 'cover'}}
+							style={{ objectFit: 'cover' }}
 							className="brightness-[0.7]"
 						/>
 						<span className="absolute inset-0 bg-neutral-900/50" />
@@ -253,7 +242,7 @@ export default function Home(props: Props) {
 					className="bg-black"
 					fill
 					alt="A map locating roughly where I am right now"
-					style={{objectFit: 'cover'}}
+					style={{ objectFit: 'cover' }}
 				/>
 
 				<div className="absolute top-1/2 left-1/2 z-10 flex w-full flex-shrink-0 -translate-x-1/2 -translate-y-1/2 flex-col items-center space-y-2">
