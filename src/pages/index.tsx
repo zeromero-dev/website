@@ -34,7 +34,7 @@ import {Time} from '../components/time';
 import {useUpdatingLanyard} from '../hooks/lanyard';
 import matrix from '../images/matrix.gif';
 import me from '../images/me.jpg';
-import {getMapURL} from '../server/apple-maps';
+// import {getMapURL} from '../server/apple-maps';
 import {env} from '../server/env';
 import {getLanyard} from '../server/lanyard';
 import {age, discordId} from '../utils/constants';
@@ -42,7 +42,7 @@ import {formatList} from '../utils/lists';
 
 export interface Props {
 	lanyard: Data;
-	map: string;
+	// map: string;
 	location: string;
 }
 
@@ -50,11 +50,11 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 	const lanyard = await getLanyard(discordId);
 	const location = lanyard.kv.location ?? env.DEFAULT_LOCATION;
 
-	const map = getMapURL(location);
+	// const map = getMapURL(location);
 
 	return {
 		revalidate: 10,
-		props: {map, location, lanyard},
+		props: {location, lanyard},
 	};
 };
 
@@ -96,7 +96,7 @@ export default function Home(props: Props) {
 
 			<CardHoverEffect className="col-span-2 h-full">
 				<Link
-					href="https://twitter.com/alistaiir"
+					href="https://twitter.com/zeromerodev"
 					target="_blank"
 					rel="noopener noreferrer"
 					className={clsx(
@@ -137,7 +137,7 @@ export default function Home(props: Props) {
 
 			<CardHoverEffect className="col-span-3 h-full md:col-span-3">
 				<Link
-					href="https://github.com/alii"
+					href="https://github.com/zeromero-dev"
 					target="_blank"
 					rel="noopener noreferrer"
 					className={clsx(
