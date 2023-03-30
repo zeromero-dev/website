@@ -13,6 +13,9 @@ module.exports = {
 		},
 		extend: {
 			colors: {
+				mainblack: '#191825',
+				mainblue: '#865DFF',
+				pinker: '#E384FF',
 				blurple: '#5865F2',
 			},
 		},

@@ -3,8 +3,10 @@ import type { GetStaticProps } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { HiOutlineExternalLink } from 'react-icons/hi';
+import bladen from '../images/bladen.png'
 import {
-	SiAmazonaws,
+	SiPnpm,
+	SiPython,
 	SiBabel,
 	SiDiscord,
 	SiDocker,
@@ -24,15 +26,12 @@ import {
 	SiTypescript,
 	SiVisualstudiocode,
 	SiWebpack,
-	SiWebstorm,
-	SiYarn,
 } from 'react-icons/si';
 import type { Data } from 'use-lanyard';
 import { ContactForm } from '../components/contact-form';
 import { CardHoverEffect, hoverClassName } from '../components/hover-card';
 import { Time } from '../components/time';
 import { useUpdatingLanyard } from '../hooks/lanyard';
-import matrix from '../images/matrix.gif';
 import me from '../images/me.jpg';
 // import {getMapURL} from '../server/apple-maps';
 import { env } from '../server/env';
@@ -77,7 +76,7 @@ export default function Home(props: Props) {
 					target="_blank"
 					rel="noopener noreferrer"
 					className={clsx(
-						'flex h-full items-center justify-center rounded-2xl bg-sky-500 text-4xl text-white',
+						'flex h-full items-center justify-center rounded-2xl bg-mainblue text-4xl text-white hover:border-pink-500/50', ',
 					)}
 				>
 					<span className="sr-only">Twitter</span>
@@ -136,11 +135,11 @@ export default function Home(props: Props) {
 				>
 					<span aria-hidden className="pointer-events-none absolute inset-0 -z-20">
 						<Image
-							src={matrix}
-							alt="The Matrix scrolling characters effect"
+							src={bladen}
+							alt="bacgkround image"
 							fill
 							style={{ objectFit: 'cover' }}
-							className="brightness-[0.7]"
+							className="brightness-[1.4] blur-[3px]"
 						/>
 						<span className="absolute inset-0 bg-neutral-900/50" />
 					</span>
@@ -155,7 +154,7 @@ export default function Home(props: Props) {
 					<span className="space-y-0.5 px-6 pb-6">
 						<span className="block font-title font-bold">github</span>
 
-						<span className="block text-sm">my open source work &amp; contributions</span>
+						<span className="block text-sm">my profile on github</span>
 					</span>
 				</Link>
 			</CardHoverEffect>
@@ -264,7 +263,7 @@ export default function Home(props: Props) {
 				</div>
 			</div>
 
-			<div className="col-span-3 flex items-center justify-center rounded-2xl bg-fuchsia-700 p-6 text-fuchsia-100 md:col-span-2">
+			<div className="col-span-3 flex items-center justify-center rounded-2xl bg-mainblue p-6 text-fuchsia-100 md:col-span-2">
 				<div className="grid w-full grid-cols-4 grid-rows-4 gap-4 [&>svg]:w-full [&>svg]:text-center">
 					<SiTypescript size={24} />
 					<SiDocker size={24} />
@@ -276,16 +275,15 @@ export default function Home(props: Props) {
 					<SiNodedotjs size={24} />
 					<SiGo size={24} />
 					<SiJavascript size={24} />
-					<SiAmazonaws size={24} />
-					<SiWebstorm size={24} />
+					<SiPnpm size={24} />
 					<SiWebpack size={24} />
 					<SiBabel size={24} />
-					<SiYarn size={24} />
 					<SiGit size={24} />
 					<SiSpotify size={24} />
 					<SiMongodb size={24} />
 					<SiVisualstudiocode size={24} />
 					<SiDiscord size={24} />
+					<SiPython size={24} />
 				</div>
 			</div>
 
