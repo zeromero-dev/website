@@ -17,6 +17,8 @@ module.exports = {
 				mainblue: '#865DFF',
 				pinker: '#E384FF',
 				blurple: '#5865F2',
+				darkpurple: '#b569cc',
+				darkpink: "69335f"
 			},
 		},
 	},

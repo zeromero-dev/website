@@ -7,6 +7,7 @@ const config = {
 	env: dotenv(),
 
 	images: {
+		domains: ['emoji.redditmedia.com'],
 		remotePatterns: [
 			{
 				protocol: 'https',

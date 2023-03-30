@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { HiOutlineExternalLink } from 'react-icons/hi';
 import bladen from '../images/bladen.png'
 import {
+	SiObsidian,
 	SiPnpm,
 	SiPython,
 	SiBabel,
@@ -19,7 +20,7 @@ import {
 	SiNodedotjs,
 	SiPostgresql,
 	SiReact,
-	SiRedis,
+	SiReactquery,
 	SiSpotify,
 	SiTailwindcss,
 	SiTwitter,
@@ -66,7 +67,7 @@ export default function Home(props: Props) {
 
 	return (
 		<main className="mx-auto grid max-w-3xl grid-cols-6 gap-6 px-6 pb-40 pt-16">
-			<div className="p-200 col-span-4 flex items-center justify-center overflow-hidden rounded-2xl bg-pink-200 dark:border-pink-500 dark:bg-pink-500/20 dark:backdrop-blur-2xl md:col-span-4 md:h-52">
+			<div className="p-200 col-span-4 flex items-center justify-center overflow-hidden rounded-2xl bg-darkpurple dark:border-darkpurple dark:bg-darkpurple  md:col-span-4 md:h-52">
 				<AboutMe />
 			</div>
 
@@ -76,7 +77,7 @@ export default function Home(props: Props) {
 					target="_blank"
 					rel="noopener noreferrer"
 					className={clsx(
-						'flex h-full items-center justify-center rounded-2xl bg-mainblue text-4xl text-white hover:border-pink-500/50', ',
+						'flex h-full items-center justify-center rounded-2xl bg-mainblue text-4xl text-white hover:border-pink-500/50', 
 					)}
 				>
 					<span className="sr-only">Twitter</span>
@@ -133,13 +134,13 @@ export default function Home(props: Props) {
 						hoverClassName,
 					)}
 				>
-					<span aria-hidden className="pointer-events-none absolute inset-0 -z-20">
+					<span aria-hidden className="pointer-events-none absolute inset-0 -z-20 transition duration-400 group-hover:blur-[3px]">
 						<Image
 							src={bladen}
 							alt="bacgkround image"
 							fill
 							style={{ objectFit: 'cover' }}
-							className="brightness-[1.4] blur-[3px]"
+							className="brightness-[1.4] "
 						/>
 						<span className="absolute inset-0 bg-neutral-900/50" />
 					</span>
@@ -264,51 +265,48 @@ export default function Home(props: Props) {
 			</div>
 
 			<div className="col-span-3 flex items-center justify-center rounded-2xl bg-mainblue p-6 text-fuchsia-100 md:col-span-2">
-				<div className="grid w-full grid-cols-4 grid-rows-4 gap-4 [&>svg]:w-full [&>svg]:text-center">
-					<SiTypescript size={24} />
-					<SiDocker size={24} />
-					<SiNextdotjs size={24} />
-					<SiRedis size={24} />
-					<SiPostgresql size={24} />
-					<SiReact size={24} />
-					<SiTailwindcss size={24} />
-					<SiNodedotjs size={24} />
-					<SiGo size={24} />
-					<SiJavascript size={24} />
-					<SiPnpm size={24} />
-					<SiWebpack size={24} />
-					<SiBabel size={24} />
-					<SiGit size={24} />
-					<SiSpotify size={24} />
-					<SiMongodb size={24} />
-					<SiVisualstudiocode size={24} />
-					<SiDiscord size={24} />
-					<SiPython size={24} />
+				<div className="grid w-full grid-cols-4 grid-rows-4 gap-4 [&>svg]:w-full [&>svg]:text-center ">
+					<SiTypescript size={24} className='transition-transform duration-500 hover:scale-[1.6]'/>
+					<SiDocker size={24} className='transition-transform duration-500 hover:scale-[1.6]'/>
+					<SiNextdotjs size={24} className='transition-transform duration-500 hover:scale-[1.6]'/>
+					<SiObsidian size={24} className='transition-transform duration-500 hover:scale-[1.6]'/>
+					<SiReactquery size={24} className='transition-transform duration-500 hover:scale-[1.6]'/>
+					<SiPostgresql size={24} className='transition-transform duration-500 hover:scale-[1.6]'/>
+					<SiReact size={24} className='transition-transform duration-500 hover:scale-[1.6]'/>
+					<SiTailwindcss size={24} className='transition-transform duration-500 hover:scale-[1.6]'/>
+					<SiNodedotjs size={24} className='transition-transform duration-500 hover:scale-[1.6]'/>
+					<SiGo size={24} className='transition-transform duration-500 hover:scale-[1.6]'/>
+					<SiJavascript size={24} className='transition-transform duration-500 hover:scale-[1.6]'/>
+					<SiPnpm size={24} className='transition-transform duration-500 hover:scale-[1.6]'/>
+					<SiWebpack size={24} className='transition-transform duration-500 hover:scale-[1.6]'/>
+					<SiBabel size={24} className='transition-transform duration-500 hover:scale-[1.6]'/>
+					<SiGit size={24} className='transition-transform duration-500 hover:scale-[1.6]'/>
+					<SiSpotify size={24} className='transition-transform duration-500 hover:scale-[1.6]'/>
+					<SiMongodb size={24} className='transition-transform duration-500 hover:scale-[1.6]'/>
+					<SiVisualstudiocode size={24} className='transition-transform duration-500 hover:scale-[1.6]'/>
+					<SiDiscord size={24} className='transition-transform duration-500 hover:scale-[1.6]'/>
+					<SiPython size={24} className='transition-transform duration-500 hover:scale-[1.6]'/>
 				</div>
 			</div>
 
-			<div className="col-span-6 space-y-2 rounded-2xl bg-yellow-200 p-6 dark:bg-indigo-800 md:col-span-4">
+			<div className="col-span-6 space-y-2 rounded-2xl bg-mainblue p-6 dark:bg-mainblue md:col-span-4">
 				<h2 className="font-title text-xl font-bold">
-					hello world <span className="inline dark:hidden">🌻</span>
-					<span className="hidden dark:inline">⭐</span>
+					~/.config/
+					<Image src="https://emoji.redditmedia.com/o81mrgvs8r711_t5_2sx2i/Arch" alt="Arch Linux logo" width={26} height={26} className="inline color-fuchsia-100" />
 				</h2>
 
 				<p>
-					My name is Alistair, I'm a software engineer from the United Kingdom. I've been programming for as long as I
-					can remember, and I'm currently spending my time with the wonderful people at{' '}
-					<Link className="underline" href="https://hop.io">
-						Hop
-					</Link>
-					.
+					My name is Roman, I'm a software engineer from Ukraine.
 				</p>
 
 				<p>
-					Beyond programming, I'm really interested in music production and you can often catch spending time messing
-					with DJ decks and my Maschine. Either that or I'll be out riding my Boosted Board 🛹
+					Film nerd. 
+					Ryan Gosling enjoyer.
+					
 				</p>
 			</div>
 
-			<div className="col-span-6 space-y-4 rounded-2xl bg-lime-400 p-6 text-black md:col-span-6">
+			<div className="col-span-6 space-y-4 rounded-2xl bg-darkpurple p-6 text-black md:col-span-6">
 				<ContactForm />
 			</div>
 		</main>

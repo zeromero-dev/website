@@ -25,8 +25,8 @@ export const AboutMe = () => {
                 </p>
 
                 <p className="text-center text-pink-800 dark:text-pink-300/80 dark:text-glow-pink-500/30 md:text-left">
-                    <Link href="https://alistair.blog" target="_blank" rel="noopener noreferrer">
-                        blog ↗️
+                    <Link href="https://www.linkedin.com/in/zeromerodev/" target="_blank" rel="noopener noreferrer">
+                        linkedin ↗️
                     </Link>
                 </p>
             </div>
