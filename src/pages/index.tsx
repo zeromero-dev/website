@@ -5,49 +5,28 @@ import Link from 'next/link';
 import { HiOutlineExternalLink } from 'react-icons/hi';
 import bladen from '../images/bladen.png'
 import {
-	SiObsidian,
-	SiPnpm,
-	SiPython,
-	SiBabel,
-	SiDiscord,
-	SiDocker,
-	SiGit,
-	SiGithub,
-	SiArchlinux,
-	SiJavascript,
-	SiMongodb,
-	SiNextdotjs,
-	SiPostgresql,
-	SiReact,
-	SiReactquery,
-	SiSpotify,
-	SiTailwindcss,
-	SiTwitter,
-	SiTypescript,
-	SiVisualstudiocode,
-	SiWebpack,
-} from 'react-icons/si';
-import {BsFillTerminalFill} from 'react-icons/bs'
+	SiSpotify, SiTwitter, SiGithub
+} from "react-icons/si";
 import type { Data } from 'use-lanyard';
 import { ContactForm } from '../components/contact-form';
 import { CardHoverEffect, hoverClassName } from '../components/hover-card';
 import { Time } from '../components/time';
 import { useUpdatingLanyard } from '../hooks/lanyard';
 import me from '../images/me.jpg';
-// import {getMapURL} from '../server/apple-maps';
 import { env } from '../server/env';
 import { getLanyard } from '../server/lanyard';
 import { age, discordId } from '../utils/constants';
 import { formatList } from '../utils/lists';
-import arch from '../images/arch.svg'
 import { AboutMe } from '../components/about-me';
+import { Discord } from '../components/Discord';
+import { Technologies } from '../components/Technologies';
+import { Config } from '../components/Config';
 
 export interface Props {
 	lanyard: Data;
-	// map: string;
 	location: string;
 }
-
+//commenting this breaks the build
 export const getStaticProps: GetStaticProps<Props> = async () => {
 	const lanyard = await getLanyard(discordId);
 	const location = lanyard.kv.location ?? env.DEFAULT_LOCATION;
@@ -67,9 +46,7 @@ export default function Home(props: Props) {
 
 	return (
 		<main className="mx-auto grid max-w-3xl grid-cols-6 gap-6 px-6 pb-40 pt-16 ">
-			<div className="p-200 col-span-4 flex items-center justify-center overflow-hidden rounded-2xl bg-darkpurple dark:border-darkpurple dark:bg-darkpurple  md:col-span-4 md:h-52">
-				<AboutMe />
-			</div>
+			<AboutMe />
 
 			<CardHoverEffect className="col-span-2 h-full">
 				<Link
@@ -77,7 +54,7 @@ export default function Home(props: Props) {
 					target="_blank"
 					rel="noopener noreferrer"
 					className={clsx(
-						'flex h-full items-center justify-center rounded-2xl bg-mainblue text-4xl text-white hover:border-pink-500/50', 
+						'flex h-full items-center justify-center rounded-2xl bg-mainblue text-4xl text-white hover:border-pink-500/50',
 					)}
 				>
 					<span className="sr-only">Twitter</span>
@@ -86,42 +63,7 @@ export default function Home(props: Props) {
 					</span>
 				</Link>
 			</CardHoverEffect>
-
-			{/* Discord Status Component */}
-			<CardHoverEffect className={clsx(
-				'col-span-2 h-full ',
-			)} >
-				<div
-					className={clsx(
-						'col-span-3 flex h-52 items-center justify-center rounded-2xl text-4xl md:col-span-2',
-						{
-							online: 'bg-green-500',
-							idle: 'bg-orange-400 text-orange-50 ',
-							dnd: 'bg-red-500 text-red-50',
-							offline: 'bg-blurple text-white/90',
-						}[status],
-					)}
-				>
-					<div className=" space-y-1 text-center md:scale-[1.2] transform-gpu transition group-hover:-rotate-[10deg] group-hover:scale-[1.3]">
-						<p className="text-base">
-							<h2>
-								<SiDiscord className="inline opacity-100 mb-1" /> {' '}
-								{lanyard.discord_user.username}#{lanyard.discord_user.discriminator}
-							</h2>
-						</p>
-						<p className={clsx(
-							{
-								online: 'bg-color-green-500 animate-blink',
-								idle: 'bg-orange-400 text-orange-50 animate-shake',
-								dnd: 'bg-red-500 text-red-50',
-								offline: 'bg-blurple text-white/90',
-							}[status],
-						)}>
-							{status}
-						</p>
-					</div>
-				</div>
-			</CardHoverEffect>
+			<Discord lanyard={lanyard} status={status} />
 			<Time />
 
 			<CardHoverEffect className="col-span-3 h-full md:col-span-3">
@@ -160,20 +102,22 @@ export default function Home(props: Props) {
 				</Link>
 			</CardHoverEffect>
 
+			{/* Spotify  copmonent*/}
 			<CardHoverEffect className="col-span-3 h-52">
 				{!lanyard?.spotify || !lanyard.spotify.album_art_url ? (
 					<Link
-						href="https://open.spotify.com/playlist/18R9Cntl2PZEaGMLz4cyX2"
+						href="https://open.spotify.com/playlist/37i9dQZF1EVKuMoAJjoTIw?si=ff54ca7cd1ae485e"
 						target="_blank"
 						rel="noopener noreferrer"
 						className={clsx('group relative flex h-full overflow-hidden rounded-2xl', hoverClassName)}
 					>
 						<span className="absolute inset-0 -z-10">
-							{/* eslint-disable-next-line @next/next/no-img-element */}
-							<img
-								src={'https://i.scdn.co/image/ab67706c0000da84e581815a92946c295b02b936'}
+							<Image
+								src={'https://img.freepik.com/premium-photo/cute-anime-woman-looking-cityscape-by-night-time-sad-moody-manga-lofi-style-3d-rendering_717906-996.jpg?w=2000'}
 								className="absolute inset-0 h-full w-full bg-black  object-cover object-center brightness-50"
 								alt="Album cover art"
+								fill
+								style={{ objectFit: 'cover' }}
 							/>
 						</span>
 
@@ -185,10 +129,11 @@ export default function Home(props: Props) {
 
 							<div className="space-y-0.5">
 								<h2 className="font-title font-bold">
-									<span className="font-medium">playlist:</span>early travel
+									<span className="font-medium">my vibe is: </span>
+									moody
 								</h2>
 
-								<p className="text-sm">because you had to get a 3 hour bus journey in the early hours</p>
+								<p className="text-sm">moody playlist</p>
 							</div>
 						</span>
 					</Link>
@@ -199,12 +144,17 @@ export default function Home(props: Props) {
 						rel="noopener noreferrer"
 						className={clsx('group relative flex h-full overflow-hidden rounded-2xl', hoverClassName)}
 					>
-						<span className="absolute inset-0 -z-10">
-							{/* eslint-disable-next-line @next/next/no-img-element */}
-							<img
+						<span className="absolute inset-0 -z-10 transition duration-300 group-hover:blur-[3px]">
+							{/* <img
 								src={`${lanyard.spotify.album_art_url}?cache=${Date.now()}`}
 								className="absolute inset-0 h-full w-full bg-black object-cover object-center brightness-50 transition-all duration-500 will-change-[transform,_filter] group-hover:scale-[1.15] group-hover:brightness-[0.4]"
 								alt="Album cover art"
+							/> */}
+							<Image 
+							src={`${lanyard.spotify.album_art_url}?cache=${Date.now()}`}
+								className="absolute inset-0 h-full w-full bg-black object-cover object-center brightness-50 transition-all duration-500 will-change-[transform,_filter] group-hover:scale-[1.15] group-hover:brightness-[0.4]"
+								alt="Album cover art"
+								fill
 							/>
 						</span>
 
@@ -235,7 +185,7 @@ export default function Home(props: Props) {
 					</Link>
 				)}
 			</CardHoverEffect>
-
+			{/* Map component */}
 			<div className="group relative col-span-3 flex h-full min-h-[13rem] flex-shrink-0 overflow-hidden rounded-2xl">
 				<Image
 					src={props.map}
@@ -263,51 +213,8 @@ export default function Home(props: Props) {
 					</p>
 				</div>
 			</div>
-
-			<div className="col-span-3 flex items-center justify-center rounded-2xl bg-mainblue p-6 text-fuchsia-100 md:col-span-2">
-				<div className="grid w-full grid-cols-4 grid-rows-4 gap-4 [&>svg]:w-full [&>svg]:text-center ">
-					<SiTypescript size={24} className='transition-transform duration-500 hover:scale-[1.6]'/>
-					<SiDocker size={24} className='transition-transform duration-500 hover:scale-[1.6]'/>
-					<SiNextdotjs size={24} className='transition-transform duration-500 hover:scale-[1.6]'/>
-					<SiObsidian size={24} className='transition-transform duration-500 hover:scale-[1.6]'/>
-					<SiReactquery size={24} className='transition-transform duration-500 hover:scale-[1.6]'/>
-					<SiPostgresql size={24} className='transition-transform duration-500 hover:scale-[1.6]'/>
-					<SiReact size={24} className='transition-transform duration-500 hover:scale-[1.6]'/>
-					<SiTailwindcss size={24} className='transition-transform duration-500 hover:scale-[1.6]'/>
-					{/* <DiNodejs size={24} className='transition-transform duration-500 hover:scale-[1.6]'/> */}
-					<BsFillTerminalFill size={24} className='transition-transform duration-500 hover:scale-[1.6]'/>
-					<SiArchlinux size={24} className='transition-transform duration-500 hover:scale-[1.6]'/>
-					<SiJavascript size={24} className='transition-transform duration-500 hover:scale-[1.6]'/>
-					<SiPnpm size={24} className='transition-transform duration-500 hover:scale-[1.6]'/>
-					<SiWebpack size={24} className='transition-transform duration-500 hover:scale-[1.6]'/>
-					<SiBabel size={24} className='transition-transform duration-500 hover:scale-[1.6]'/>
-					<SiGit size={24} className='transition-transform duration-500 hover:scale-[1.6]'/>
-					<SiSpotify size={24} className='transition-transform duration-500 hover:scale-[1.6]'/>
-					<SiMongodb size={24} className='transition-transform duration-500 hover:scale-[1.6]'/>
-					<SiVisualstudiocode size={24} className='transition-transform duration-500 hover:scale-[1.6]'/>
-					<SiDiscord size={24} className='transition-transform duration-500 hover:scale-[1.6]'/>
-					<SiPython size={24} className='transition-transform duration-500 hover:scale-[1.6]'/>
-				</div>
-			</div>
-
-			<div className="col-span-6 space-y-2 rounded-2xl bg-mainblue p-6 dark:bg-mainblue md:col-span-4">
-				<h2 className="font-title text-xl font-bold">
-					~/.config
-					{/* <Image src={arch} alt="Arch Linux logo" width={24} height={26} className="inline mb-1 ml-0.5 color-fuchsia-100 fill-white" /> */}
-				</h2>
-
-				<p>
-					My name is Roman, I'm a software engineer from Ukraine.
-				</p>
-
-				<p>
-					Film nerd. 
-					Geeking out over Ryan Gosling and arguing about Drive (2011).
-					<br></br>
-					If you need a software expert who can also recommend a movie - contact me.
-				</p>
-			</div>
-
+			<Technologies />
+			<Config />
 			<div className="col-span-6 space-y-4 rounded-2xl bg-darkpurple p-6 text-black md:col-span-6">
 				<ContactForm />
 			</div>

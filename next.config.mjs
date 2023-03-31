@@ -7,7 +7,6 @@ const config = {
 	env: dotenv(),
 
 	images: {
-		domains: ['emoji.redditmedia.com'],
 		remotePatterns: [
 			{
 				protocol: 'https',
@@ -20,6 +19,12 @@ const config = {
 				hostname: 'snapshot.apple-mapkit.com',
 				pathname: '/api/v1/snapshot',
 			},
+			{
+				protocol: 'https',
+				hostname: 'img.freepik.com',
+				port: '',
+				pathname: '/premium-photo/**',
+			  },
 		],
 	},
 
