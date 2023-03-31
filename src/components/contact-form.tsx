@@ -18,8 +18,8 @@ export function ContactForm() {
 	return (
 		<>
 			<div className="space-y-1">
-				<h2 className="font-title text-lg font-bold">Let's talk</h2>
-				<p>Drop me a message with the form below, I'll get back to the non-spam</p>
+				<h2 className="font-title text-lg font-bold">Contact me</h2>
+				<p>Drop me a message with the form below</p>
 			</div>
 
 			<form
@@ -55,7 +55,7 @@ export function ContactForm() {
 				className="space-y-2 [&>label]:block [&_input]:rounded-md [&_textarea]:rounded-md"
 			>
 				<label htmlFor="email">
-					<input type="email" name="email" id="email" required placeholder="hi@alistair.sh" className="w-full" />
+					<input type="email" name="email" id="email" required placeholder="your@email.com" className="w-full" />
 				</label>
 
 				<label htmlFor="body">
@@ -71,7 +71,7 @@ export function ContactForm() {
 				<button
 					disabled={loading}
 					type="submit"
-					className="relative float-right w-1/2 overflow-hidden rounded-md bg-black p-2 text-white"
+					className="relative float-right w-1/2 overflow-hidden rounded-md bg-black p-2 text-white hover:bg-pinker transition duration-700"
 				>
 					Send
 					{loading && (

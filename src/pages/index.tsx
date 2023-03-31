@@ -13,11 +13,10 @@ import {
 	SiDocker,
 	SiGit,
 	SiGithub,
-	SiGo,
+	SiArchlinux,
 	SiJavascript,
 	SiMongodb,
 	SiNextdotjs,
-	SiNodedotjs,
 	SiPostgresql,
 	SiReact,
 	SiReactquery,
@@ -28,6 +27,7 @@ import {
 	SiVisualstudiocode,
 	SiWebpack,
 } from 'react-icons/si';
+import {BsFillTerminalFill} from 'react-icons/bs'
 import type { Data } from 'use-lanyard';
 import { ContactForm } from '../components/contact-form';
 import { CardHoverEffect, hoverClassName } from '../components/hover-card';
@@ -39,7 +39,7 @@ import { env } from '../server/env';
 import { getLanyard } from '../server/lanyard';
 import { age, discordId } from '../utils/constants';
 import { formatList } from '../utils/lists';
-
+import arch from '../images/arch.svg'
 import { AboutMe } from '../components/about-me';
 
 export interface Props {
@@ -66,7 +66,7 @@ export default function Home(props: Props) {
 	const status = lanyard.discord_status ?? 'offline';
 
 	return (
-		<main className="mx-auto grid max-w-3xl grid-cols-6 gap-6 px-6 pb-40 pt-16">
+		<main className="mx-auto grid max-w-3xl grid-cols-6 gap-6 px-6 pb-40 pt-16 ">
 			<div className="p-200 col-span-4 flex items-center justify-center overflow-hidden rounded-2xl bg-darkpurple dark:border-darkpurple dark:bg-darkpurple  md:col-span-4 md:h-52">
 				<AboutMe />
 			</div>
@@ -134,7 +134,7 @@ export default function Home(props: Props) {
 						hoverClassName,
 					)}
 				>
-					<span aria-hidden className="pointer-events-none absolute inset-0 -z-20 transition duration-400 group-hover:blur-[3px]">
+					<span aria-hidden className="pointer-events-none absolute inset-0 -z-20 transition duration-300 group-hover:blur-[3px]">
 						<Image
 							src={bladen}
 							alt="bacgkround image"
@@ -274,8 +274,9 @@ export default function Home(props: Props) {
 					<SiPostgresql size={24} className='transition-transform duration-500 hover:scale-[1.6]'/>
 					<SiReact size={24} className='transition-transform duration-500 hover:scale-[1.6]'/>
 					<SiTailwindcss size={24} className='transition-transform duration-500 hover:scale-[1.6]'/>
-					<SiNodedotjs size={24} className='transition-transform duration-500 hover:scale-[1.6]'/>
-					<SiGo size={24} className='transition-transform duration-500 hover:scale-[1.6]'/>
+					{/* <DiNodejs size={24} className='transition-transform duration-500 hover:scale-[1.6]'/> */}
+					<BsFillTerminalFill size={24} className='transition-transform duration-500 hover:scale-[1.6]'/>
+					<SiArchlinux size={24} className='transition-transform duration-500 hover:scale-[1.6]'/>
 					<SiJavascript size={24} className='transition-transform duration-500 hover:scale-[1.6]'/>
 					<SiPnpm size={24} className='transition-transform duration-500 hover:scale-[1.6]'/>
 					<SiWebpack size={24} className='transition-transform duration-500 hover:scale-[1.6]'/>
@@ -291,8 +292,8 @@ export default function Home(props: Props) {
 
 			<div className="col-span-6 space-y-2 rounded-2xl bg-mainblue p-6 dark:bg-mainblue md:col-span-4">
 				<h2 className="font-title text-xl font-bold">
-					~/.config/
-					<Image src="https://emoji.redditmedia.com/o81mrgvs8r711_t5_2sx2i/Arch" alt="Arch Linux logo" width={26} height={26} className="inline color-fuchsia-100" />
+					~/.config
+					{/* <Image src={arch} alt="Arch Linux logo" width={24} height={26} className="inline mb-1 ml-0.5 color-fuchsia-100 fill-white" /> */}
 				</h2>
 
 				<p>
@@ -301,8 +302,9 @@ export default function Home(props: Props) {
 
 				<p>
 					Film nerd. 
-					Ryan Gosling enjoyer.
-					
+					Geeking out over Ryan Gosling and arguing about Drive (2011).
+					<br></br>
+					If you need a software expert who can also recommend a movie - contact me.
 				</p>
 			</div>
 
