@@ -29,7 +29,7 @@ export interface Props {
 //commenting this breaks the build
 export const getStaticProps: GetStaticProps<Props> = async () => {
 	const lanyard = await getLanyard(discordId);
-	const location = lanyard.kv.location ?? env.DEFAULT_LOCATION;
+	const location = await lanyard.kv.location ?? env.DEFAULT_LOCATION;
 
 	// const map = getMapURL(location);
 
@@ -145,13 +145,8 @@ export default function Home(props: Props) {
 						className={clsx('group relative flex h-full overflow-hidden rounded-2xl', hoverClassName)}
 					>
 						<span className="absolute inset-0 -z-10 transition duration-300 group-hover:blur-[3px]">
-							{/* <img
+							<Image
 								src={`${lanyard.spotify.album_art_url}?cache=${Date.now()}`}
-								className="absolute inset-0 h-full w-full bg-black object-cover object-center brightness-50 transition-all duration-500 will-change-[transform,_filter] group-hover:scale-[1.15] group-hover:brightness-[0.4]"
-								alt="Album cover art"
-							/> */}
-							<Image 
-							src={`${lanyard.spotify.album_art_url}?cache=${Date.now()}`}
 								className="absolute inset-0 h-full w-full bg-black object-cover object-center brightness-50 transition-all duration-500 will-change-[transform,_filter] group-hover:scale-[1.15] group-hover:brightness-[0.4]"
 								alt="Album cover art"
 								fill
@@ -207,7 +202,6 @@ export default function Home(props: Props) {
 						width={60}
 						className="h-15 w-15 z-20 rounded-full border-2 border-black transition-transform duration-500 group-hover:-rotate-[10deg] group-hover:scale-110"
 					/>
-
 					<p className="rounded-full bg-white/10 pl-2.5 pr-3 font-bold text-white/95 backdrop-blur-md">
 						📍 {props.location}
 					</p>

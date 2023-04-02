@@ -8,13 +8,15 @@ export const Config = () => {
             </h2>
 
             <p>
-                My name is Roman, I'm a software engineer from Ukraine.
+                My name is Roman and I'm a software engineer from Ukraine.
+                I mostly do frontend stuff but I'm highly interested and work with backend as well.
             </p>
 
             <p>
                 Film nerd.
+                <br />
                 Geeking out over Ryan Gosling and arguing about Drive (2011).
-                <br></br>
+                <br />
                 If you need a software expert who can also recommend a movie - contact me.
             </p>
         </div>
