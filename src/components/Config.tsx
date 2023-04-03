@@ -8,7 +8,9 @@ export const Config = () => {
             </h2>
 
             <p>
-                My name is Roman and I'm a software engineer from Ukraine.
+                My name is Roman and I'm a software engineer from Ukraine. 
+                <p className='font-semibold'>In love with Open Source.</p>
+            
                 I mostly do frontend stuff but I'm highly interested and work with backend as well.
             </p>
 

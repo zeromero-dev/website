@@ -112,12 +112,15 @@ export default function Home(props: Props) {
 						href="https://open.spotify.com/playlist/37i9dQZF1EVKuMoAJjoTIw?si=ff54ca7cd1ae485e"
 						target="_blank"
 						rel="noopener noreferrer"
-						className={clsx('group relative flex h-full overflow-hidden rounded-2xl', hoverClassName)}
+						className={clsx(
+							'group relative flex h-full w-full flex-col justify-between overflow-hidden rounded-2xl text-white',
+							hoverClassName,
+						)}
 					>
 						<span className="absolute inset-0 -z-10">
 							<Image
 								src={'https://img.freepik.com/premium-photo/cute-anime-woman-looking-cityscape-by-night-time-sad-moody-manga-lofi-style-3d-rendering_717906-996.jpg?w=2000'}
-								className="absolute inset-0 h-full w-full bg-black  object-cover object-center brightness-50"
+								className={clsx("absolute inset-0 h-full w-full bg-black  object-cover object-center brightness-50 transition duration-500 group-hover:blur-[3px]")}
 								alt="Album cover art"
 								fill
 								style={{ objectFit: 'cover' }}
@@ -159,7 +162,7 @@ export default function Home(props: Props) {
 						<span className="flex flex-1 flex-col justify-between p-6 text-white">
 							<span className="flex justify-between">
 								<SiSpotify className="text-2xl" />
-								<HiOutlineExternalLink className="text-xl opacity-50 transition duration-500 group-hover:opacity-100" />
+								<HiOutlineExternalLink className="text-xl opacity-50 transition duration-500 group-hover:opacity-100  " />
 							</span>
 
 							<span>
@@ -183,8 +186,7 @@ export default function Home(props: Props) {
 					</Link>
 				)}
 			</CardHoverEffect>
-			{/* Map component */}
-				<Letterboxd />
+			<Letterboxd />
 			<Technologies />
 			<Config />
 			<div className="col-span-6 space-y-4 rounded-2xl bg-darkpurple p-6 text-black md:col-span-6">

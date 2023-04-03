@@ -34,6 +34,10 @@ export const useLetterboxd = () => {
             setItems(jsonData);
         }
         fetchData();
+        const interval = setInterval(() => {
+            fetchData();
+          }, 5 * 60 * 1000);
+            return () => clearInterval(interval);
     }, []); //can't set to items because it will cause an infinite loop 
 
     return (
