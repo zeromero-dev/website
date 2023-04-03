@@ -21,6 +21,9 @@ import { AboutMe } from '../components/about-me';
 import { Discord } from '../components/Discord';
 import { Technologies } from '../components/Technologies';
 import { Config } from '../components/Config';
+import back from '../images/back.png'
+import Letterboxd from './Letterboxd';
+
 
 export interface Props {
 	lanyard: Data;
@@ -181,37 +184,12 @@ export default function Home(props: Props) {
 				)}
 			</CardHoverEffect>
 			{/* Map component */}
-			<div className="group relative col-span-3 flex h-full min-h-[13rem] flex-shrink-0 overflow-hidden rounded-2xl">
-				<Image
-					src={props.map}
-					className="bg-black"
-					fill
-					alt="A map locating roughly where I am right now"
-					style={{ objectFit: 'cover' }}
-				/>
-
-				<div className="absolute top-1/2 left-1/2 z-10 flex w-full flex-shrink-0 -translate-x-1/2 -translate-y-1/2 flex-col items-center space-y-2">
-					<div aria-hidden className="absolute translate-y-[14px]">
-						<span className="block h-12 w-12 animate-ping rounded-full bg-lime-500 duration-1000" />
-					</div>
-
-					<Image
-						src={me}
-						alt="Photo of me above a map of my current location"
-						height={60}
-						width={60}
-						className="h-15 w-15 z-20 rounded-full border-2 border-black transition-transform duration-500 group-hover:-rotate-[10deg] group-hover:scale-110"
-					/>
-					<p className="rounded-full bg-white/10 pl-2.5 pr-3 font-bold text-white/95 backdrop-blur-md">
-						📍 {props.location}
-					</p>
-				</div>
-			</div>
+				<Letterboxd />
 			<Technologies />
 			<Config />
 			<div className="col-span-6 space-y-4 rounded-2xl bg-darkpurple p-6 text-black md:col-span-6">
 				<ContactForm />
 			</div>
-		</main>
+		</main >
 	);
 }

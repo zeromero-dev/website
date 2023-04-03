@@ -20,10 +20,10 @@ export const Discord = ({lanyard, status} : DiscordProps) => {
                 }[status],
             )}
         >
-            <div className="space-y-1 text-center md:scale-[1.2] transform-gpu transition group-hover:-rotate-[10deg] group-hover:scale-[1.3]">
+            <div className="space-y-1 text-center md:scale-[1.2] transform-gpu transition hover:-rotate-[-10deg] hover:scale-[1.3]">
                 <p className="text-base">
                     <h2>
-                        <SiDiscord className="inline opacity-100 mb-1" /> {' '}
+                        <SiDiscord className="inline opacity-100 mb-1 " /> {' '}
                         {lanyard.discord_user.username}#{lanyard.discord_user.discriminator}
                     </h2>
                 </p>

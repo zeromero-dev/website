@@ -49,3 +49,22 @@ body {
 	animation: shake 5s infinite;
   }
 
+/* show on hover text */
+.tooltip:before {
+    content: attr(data-title);
+    position: relative;
+    top: 50%;
+  	left: 50%;
+  	transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    border-radius: 0.25em;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+	z-index: 1000;
+  }
+  .tooltip:hover:before {
+    opacity: 1;
+  }

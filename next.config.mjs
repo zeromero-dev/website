@@ -13,7 +13,6 @@ const config = {
 				hostname: 'i.scdn.co',
 				pathname: '/image/*',
 			},
-
 			{
 				protocol: 'https',
 				hostname: 'snapshot.apple-mapkit.com',
@@ -24,7 +23,13 @@ const config = {
 				hostname: 'img.freepik.com',
 				port: '',
 				pathname: '/premium-photo/**',
-			  },
+			},
+			{
+				protocol: 'https',
+				hostname: 'a.ltrbxd.com',
+				port: '',
+				pathname: '/resized/**',
+			},
 		],
 	},
 

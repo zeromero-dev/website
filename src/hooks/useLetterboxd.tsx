@@ -23,10 +23,10 @@ export const letterboxdSchema = z.object({
 
 export type LetterboxdSchema = z.infer<typeof letterboxdSchema>
 
-export const useLetterboxd = async (username: string) => {
+export const useLetterboxd = () => {
     const [items, setItems] = useState<LetterboxdSchema[]>([])
-    const [error, setError] = useState<Error | null>(null)
-
+    // const [error, setError] = useState<Error | null>(null)
+    console.log(items)
     useEffect(() => {
         async function fetchData() {
             const response = await fetch('api/letterboxd');
@@ -34,9 +34,9 @@ export const useLetterboxd = async (username: string) => {
             setItems(jsonData);
         }
         fetchData();
-    }), [];
+    }, []); //can't set to items because it will cause an infinite loop 
 
     return (
-        { items, error }
+        { items }
     )
 }
