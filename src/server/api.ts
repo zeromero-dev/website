@@ -23,7 +23,7 @@ export const api = createAPI({
 					formData.append('remoteip', ip);
 				}
 
-				// const url = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
+				const url = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
 
 				const result = await fetch(url, {
 					body: formData,
