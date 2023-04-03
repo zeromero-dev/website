@@ -28,15 +28,13 @@ export const useLetterboxd = async (username: string) => {
     const [error, setError] = useState<Error | null>(null)
 
     useEffect(() => {
-        fetch("http://localhost:3000/api/letterboxd")
-            .then((res) => res.json())
-            .then((data) => {
-                setItems(data.items)
-                console.log(items)
-
-            })
-            .catch((err) => setError(err))
-    }), [username];
+        async function fetchData() {
+            const response = await fetch('api/letterboxd');
+            const jsonData = await response.json();
+            setItems(jsonData);
+        }
+        fetchData();
+    }), [];
 
     return (
         { items, error }
