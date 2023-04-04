@@ -8,18 +8,18 @@ export const Config = () => {
             </h2>
 
             <p>
-                My name is Roman and I'm a software engineer from Ukraine. 
-                <p className='font-semibold'>In love with Open Source.</p>
-            
+                My name is Roman and I'm a software engineer from Ukraine and <span className='font-medium'>Open Source lover.</span>
+                <br />
                 I mostly do frontend stuff but I'm highly interested and work with backend as well.
             </p>
-
             <p>
                 Film nerd.
                 <br />
                 Geeking out over Ryan Gosling and arguing about Drive (2011).
                 <br />
-                If you need a software expert who can also recommend a movie - contact me.
+                <p>
+                    If you need a software expert who can also recommend a movie - contact me.
+                </p>
             </p>
         </div>
     )

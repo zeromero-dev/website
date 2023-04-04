@@ -27,18 +27,19 @@ import Letterboxd from './Letterboxd';
 
 export interface Props {
 	lanyard: Data;
-	location: string;
+	// location: string;
 }
 //commenting this breaks the build
 export const getStaticProps: GetStaticProps<Props> = async () => {
 	const lanyard = await getLanyard(discordId);
-	const location = await lanyard.kv.location ?? env.DEFAULT_LOCATION;
+	// const location = await lanyard.kv.location ?? env.DEFAULT_LOCATION;
 
 	// const map = getMapURL(location);
 
 	return {
-		revalidate: 10,
-		props: { location, lanyard },
+		//causes re-renders every 10 seconds
+		// revalidate: 10,
+		props: { lanyard },
 	};
 };
 
