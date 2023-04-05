@@ -49,6 +49,7 @@ export function ContactForm() {
 						.finally(() => {
 							setLoading(false);
 						});
+						console.log(promise)
 				}}
 				method="POST"
 				action="/api/contact"
@@ -61,11 +62,11 @@ export function ContactForm() {
 				<label htmlFor="body">
 					<textarea id="body" name="body" rows={5} required placeholder="Your message" className="w-full resize-y" />
 				</label>
-
+				{/* Captcha */}
 				<Turnstile
 					options={{responseFieldName: 'turnstile'}}
 					style={{display: 'none'}}
-					siteKey="0x4AAAAAAABwxsgAijQAi5FS"
+					siteKey="0x4AAAAAAADttFli5Zd3YOto"
 				/>
 
 				<button

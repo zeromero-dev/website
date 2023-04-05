@@ -53,5 +53,6 @@ export default api({
 		return {
 			_redirect: '/thanks',
 		};
+console.log(result)
 	},
 });

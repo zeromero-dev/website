@@ -38,7 +38,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 
 	return {
 		//causes re-renders every 10 seconds
-		// revalidate: 10,
+		revalidate: 10,
 		props: { lanyard },
 	};
 };
@@ -51,7 +51,6 @@ export default function Home(props: Props) {
 	return (
 		<main className="mx-auto grid max-w-3xl grid-cols-6 gap-6 px-6 pb-40 pt-16 ">
 			<AboutMe />
-
 			<CardHoverEffect className="col-span-2 h-full">
 				<Link
 					href="https://twitter.com/zeromerodev"
