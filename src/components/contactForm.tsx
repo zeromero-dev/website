@@ -45,7 +45,7 @@ export function ContactForm() {
 						.then(async () => {
 							setSubmitted(true);
 						})
-						.catch(() => null)
+						.catch(() => undefined) //eslint-disable-line unicorn/no-useless-undefined
 						.finally(() => {
 							setLoading(false);
 						});

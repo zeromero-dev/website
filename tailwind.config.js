@@ -1,4 +1,6 @@
 // @ts-check
+/* eslint-disable unicorn/prefer-module */
+
 const defaultTheme = require('tailwindcss/defaultTheme');
 const {default: flattenColorPalette} = require('tailwindcss/lib/util/flattenColorPalette');
 

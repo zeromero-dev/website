@@ -77,7 +77,7 @@ function Day({time}: {time: Date}) {
 				transition={{
 					duration: 4,
 					ease: 'easeInOut',
-					repeat: Infinity,
+					repeat: Number.POSITIVE_INFINITY,
 					repeatType: 'reverse',
 				}}
 				className="pointer-events-none absolute bottom-0 right-0 rounded-tl-full bg-white/10 pt-2 pl-2 md:pt-4 md:pl-4"
@@ -91,7 +91,7 @@ function Day({time}: {time: Date}) {
 								transition={{
 									duration: 4,
 									ease: 'easeInOut',
-									repeat: Infinity,
+									repeat: Number.POSITIVE_INFINITY,
 									repeatType: 'reverse',
 								}}
 								className="relative h-5 w-5 rounded-tl-full bg-yellow-200"

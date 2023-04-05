@@ -11,7 +11,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 		// res.setHeader('Cache-Control', 'public, max-age=300'); // 5 minutes (300 seconds)
 
 		res.status(200).json(data);
-	} catch (error) {
+	} catch {
 		res.status(500).json({message: 'Something went wrong'});
 	}
 }

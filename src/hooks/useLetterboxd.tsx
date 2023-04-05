@@ -26,6 +26,7 @@ export type LetterboxdSchema = z.infer<typeof letterboxdSchema>;
 export const useLetterboxd = () => {
     const [items, setItems] = useState<LetterboxdSchema[]>([]);
     const memoizedItems = useMemo(() => items, [items]);
+
     useEffect(() => {
         async function fetchData() {
             const response = await fetch('api/letterboxd');
@@ -33,7 +34,6 @@ export const useLetterboxd = () => {
             setItems(jsonData);
         }
         fetchData();
-        console.log(memoizedItems);
     }, []); //can't set to items because it will cause an infinite loop
 
     return { items: memoizedItems };

@@ -25,8 +25,8 @@ export const movieInitial = [
 {
 	  "type": "diary",
 	  "date": {
-		"published": 1680379506000,
-		"watched": 1680307200000
+		"published": 1_680_379_506_000,
+		"watched": 1_680_307_200_000
 	  },
 	  "film": {
 		"title": "John Wick: Chapter 4",
@@ -50,8 +50,8 @@ export const movieInitial = [
 	{
 	  "type": "diary",
 	  "date": {
-		"published": 1678315855000,
-		"watched": 1678320000000
+		"published": 1_678_315_855_000,
+		"watched": 1_678_320_000_000
 	  },
 	  "film": {
 		"title": "Sorry to Bother You",
@@ -75,8 +75,8 @@ export const movieInitial = [
 	{
 	  "type": "diary",
 	  "date": {
-		"published": 1678308724000,
-		"watched": 1678233600000
+		"published": 1_678_308_724_000,
+		"watched": 1_678_233_600_000
 	  },
 	  "film": {
 		"title": "The Nice Guys",

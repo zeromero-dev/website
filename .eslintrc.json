@@ -1,7 +1,17 @@
 {
 	"extends": "plugin:unicorn/recommended",
 	"rules": {
+		"unicorn/filename-case": [
+			"warn",
+			{
+				"case": "camelCase"
+			}
+		],
+		"unicorn/no-null": "warn",
 		"react/no-unescaped-entities": "off",
-		"unicorn/prevent-abbreviations": "off"
-	}
+		"unicorn/prevent-abbreviations": "off",
+		"no-console": 2
+	},
+	"parser": "@typescript-eslint/parser",
+	"plugins": ["react", "react-hooks"]
 }

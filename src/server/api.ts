@@ -3,7 +3,7 @@ import {env} from './env';
 
 export const api = createAPI({
 	async onError(_req, _res, error) {
-		console.warn(error);
+		console.warn(error); // eslint-disable-line no-console
 		return {
 			status: 500,
 			message: error.message,

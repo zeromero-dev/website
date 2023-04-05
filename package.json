@@ -20,6 +20,7 @@
 		"@types/jwa": "^2.0.0",
 		"@types/react": "^18.0.29",
 		"@types/react-dom": "^18.0.11",
+		"@typescript-eslint/parser": "^5.57.1",
 		"autoprefixer": "^10.4.14",
 		"danger": "^11.2.4",
 		"eslint": "8.36.0",
