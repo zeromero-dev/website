@@ -1,48 +1,53 @@
-import { useState, useEffect } from "react"
-import { useLetterboxd } from "../hooks/useLetterboxd";
-import Image from "next/image";
-import back from '../images/back.png'
+import {useState, useEffect} from 'react';
+import {useLetterboxd} from '../hooks/useLetterboxd';
+import Image from 'next/image';
+import back from '../images/back.png';
 
-import { IoRepeat } from "react-icons/io5"
-import Link from "next/link";
+import {IoRepeat} from 'react-icons/io5';
+import Link from 'next/link';
 
 export const Letterboxd = () => {
-    const { items } = useLetterboxd();
+	const {items} = useLetterboxd();
 
-    if (!items) {
-        return <div>Loading data...</div>;
-    }
+	if (!items) {
+		return <div>Loading data...</div>;
+	}
 
-    return <div className="relative col-span-3 space-x-2 flex h-full min-h-[13rem] flex-shrink-0 overflow-hidden rounded-2xl bg-slate-900">
-        {/* <h1 className="text-4xl font-bold ">Myletterboxd</h1>  */}
-        {/* I don't know man */}
-        {items.map((item) => {
-            return <div key={item.uri} className="rounded-lg border-neutral-700 border-2 content-evenly">
-                {/* center here */}
-                <div className="relative w-full h-full">
-                    {/* <img src={item.film.image.medium} alt={item.film.title} /> */}
-                    <Link href={item.uri} target="_blank">
-                        <Image
-                            src={item.film.image.medium}
-                            alt={item.film.title}
-                            width={400}
-                            height={200}
-                            className="transition duration-300 hover:blur-[3px] w-full h-full object-cover rounded-lg"
-                        />
-                    </Link><div className="items-center w-full h-full">
-                        <p className="mr-2">{item.rating.text}</p>
-                        {item.isRewatch && <IoRepeat />}
-                    </div>
-                </div>
-            </div>
-        })}
-    </div>
-}
+	return (
+		<div className="relative col-span-3 flex h-full min-h-[13rem] flex-shrink-0 space-x-2 overflow-hidden rounded-2xl bg-slate-900">
+			{/* <h1 className="text-4xl font-bold ">Myletterboxd</h1>  */}
+			{/* I don't know man */}
+			{items.map(item => {
+				return (
+					<div key={item.uri} className="content-evenly rounded-lg border-2 border-neutral-700">
+						{/* center here */}
+						<div className="relative h-full w-full">
+							{/* <img src={item.film.image.medium} alt={item.film.title} /> */}
+							<Link href={item.uri} target="_blank">
+								<Image
+									src={item.film.image.medium}
+									alt={item.film.title}
+									width={400}
+									height={200}
+									className="h-full w-full rounded-lg object-cover transition duration-300 hover:blur-[3px]"
+								/>
+							</Link>
+							<div className="h-full w-full items-center">
+								<p className="mr-2">{item.rating.text}</p>
+								{item.isRewatch && <IoRepeat />}
+							</div>
+						</div>
+					</div>
+				);
+			})}
+		</div>
+	);
+};
 
-export default Letterboxd
+export default Letterboxd;
 
-
-{/* <div className="group relative col-span-3 flex h-full min-h-[13rem] flex-shrink-0 overflow-hidden rounded-2xl">
+{
+	/* <div className="group relative col-span-3 flex h-full min-h-[13rem] flex-shrink-0 overflow-hidden rounded-2xl">
 				<Image
 					src={back}
 					className="bg-black transition duration-300 group-hover:blur-[3px]"
@@ -65,4 +70,5 @@ export default Letterboxd
 		  			className="h-15 w-15 z-20 rounded-full border-2 border-black transition-transform duration-500 group-hover:-rotate-[10deg] group-hover:scale-110"
 		 		/>
 		  	</div>
-		 </div>  */}
+		 </div>  */
+}

@@ -1,6 +1,7 @@
 {
-	"extends": "next/core-web-vitals",
+	"extends": "plugin:unicorn/recommended",
 	"rules": {
-		"react/no-unescaped-entities": "off"
+		"react/no-unescaped-entities": "off",
+		"unicorn/prevent-abbreviations": "off"
 	}
 }

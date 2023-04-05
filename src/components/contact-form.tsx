@@ -49,7 +49,6 @@ export function ContactForm() {
 						.finally(() => {
 							setLoading(false);
 						});
-						console.log(promise)
 				}}
 				method="POST"
 				action="/api/contact"
@@ -72,7 +71,7 @@ export function ContactForm() {
 				<button
 					disabled={loading}
 					type="submit"
-					className="relative float-right w-1/2 overflow-hidden rounded-md bg-black p-2 text-white hover:bg-pinker transition duration-700"
+					className="relative float-right w-1/2 overflow-hidden rounded-md bg-black p-2 text-white transition duration-700 hover:bg-pinker"
 				>
 					Send
 					{loading && (

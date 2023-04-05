@@ -10,9 +10,11 @@
 		"dev": "next dev",
 		"build": "next build",
 		"start": "next start",
-		"lint": "next lint"
+		"lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+		"format": "prettier --write ."
 	},
 	"devDependencies": {
+		"@babel/eslint-parser": "^7.21.3",
 		"@tailwindcss/forms": "^0.5.3",
 		"@types/common-tags": "^1.8.1",
 		"@types/jwa": "^2.0.0",
@@ -24,6 +26,7 @@
 		"eslint-config-next": "13.2.4",
 		"postcss": "^8.4.21",
 		"prettier": "^2.8.7",
+		"prettier-plugin-organize-imports": "^3.2.2",
 		"prettier-plugin-tailwindcss": "^0.2.5",
 		"puppeteer": "^19.8.2",
 		"sharp": "^0.32.0",
@@ -37,6 +40,7 @@
 		"common-tags": "^1.8.2",
 		"dotenv": "^16.0.3",
 		"envsafe": "^2.0.3",
+		"eslint-plugin-unicorn": "^46.0.0",
 		"framer-motion": "^10.9.1",
 		"jwa": "^2.0.0",
 		"letterboxd": "^3.1.0",

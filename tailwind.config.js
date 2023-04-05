@@ -1,5 +1,4 @@
 // @ts-check
-
 const defaultTheme = require('tailwindcss/defaultTheme');
 const {default: flattenColorPalette} = require('tailwindcss/lib/util/flattenColorPalette');
 
@@ -18,7 +17,7 @@ module.exports = {
 				pinker: '#E384FF',
 				blurple: '#5865F2',
 				darkpurple: '#b569cc',
-				darkpink: "69335f",
+				darkpink: '69335f',
 			},
 		},
 	},

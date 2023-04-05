@@ -1,29 +1,26 @@
 import clsx from 'clsx';
-import type { GetStaticProps } from 'next';
+import type {GetStaticProps} from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { HiOutlineExternalLink } from 'react-icons/hi';
-import bladen from '../images/bladen.png'
-import {
-	SiSpotify, SiTwitter, SiGithub
-} from "react-icons/si";
-import type { Data } from 'use-lanyard';
-import { ContactForm } from '../components/contact-form';
-import { CardHoverEffect, hoverClassName } from '../components/hover-card';
-import { Time } from '../components/time';
-import { useUpdatingLanyard } from '../hooks/lanyard';
+import {HiOutlineExternalLink} from 'react-icons/hi';
+import bladen from '../images/bladen.png';
+import {SiSpotify, SiTwitter, SiGithub} from 'react-icons/si';
+import type {Data} from 'use-lanyard';
+import {ContactForm} from '../components/contact-form';
+import {CardHoverEffect, hoverClassName} from '../components/hover-card';
+import {Time} from '../components/time';
+import {useUpdatingLanyard} from '../hooks/lanyard';
 import me from '../images/me.jpg';
-import { env } from '../server/env';
-import { getLanyard } from '../server/lanyard';
-import { age, discordId } from '../utils/constants';
-import { formatList } from '../utils/lists';
-import { AboutMe } from '../components/about-me';
-import { Discord } from '../components/Discord';
-import { Technologies } from '../components/Technologies';
-import { Config } from '../components/Config';
-import back from '../images/back.png'
+import {env} from '../server/env';
+import {getLanyard} from '../server/lanyard';
+import {age, discordId} from '../utils/constants';
+import {formatList} from '../utils/lists';
+import {AboutMe} from '../components/about-me';
+import {Discord} from '../components/Discord';
+import {Technologies} from '../components/Technologies';
+import {Config} from '../components/Config';
+import back from '../images/back.png';
 import Letterboxd from './Letterboxd';
-
 
 export interface Props {
 	lanyard: Data;
@@ -39,12 +36,12 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 	return {
 		//causes re-renders every 10 seconds
 		revalidate: 10,
-		props: { lanyard },
+		props: {lanyard},
 	};
 };
 
 export default function Home(props: Props) {
-	const { data: lanyard } = useUpdatingLanyard(discordId, props.lanyard);
+	const {data: lanyard} = useUpdatingLanyard(discordId, props.lanyard);
 
 	const status = lanyard.discord_status ?? 'offline';
 
@@ -79,12 +76,15 @@ export default function Home(props: Props) {
 						hoverClassName,
 					)}
 				>
-					<span aria-hidden className="pointer-events-none absolute inset-0 -z-20 transition duration-300 group-hover:blur-[3px]">
+					<span
+						aria-hidden
+						className="pointer-events-none absolute inset-0 -z-20 transition duration-300 group-hover:blur-[3px]"
+					>
 						<Image
 							src={bladen}
 							alt="bacgkround image"
 							fill
-							style={{ objectFit: 'cover' }}
+							style={{objectFit: 'cover'}}
 							className="brightness-[1.4] "
 						/>
 						<span className="absolute inset-0 bg-neutral-900/50" />
@@ -119,11 +119,15 @@ export default function Home(props: Props) {
 					>
 						<span className="absolute inset-0 -z-10">
 							<Image
-								src={'https://img.freepik.com/premium-photo/cute-anime-woman-looking-cityscape-by-night-time-sad-moody-manga-lofi-style-3d-rendering_717906-996.jpg?w=2000'}
-								className={clsx("absolute inset-0 h-full w-full bg-black  object-cover object-center brightness-50 transition duration-500 group-hover:blur-[3px]")}
+								src={
+									'https://img.freepik.com/premium-photo/cute-anime-woman-looking-cityscape-by-night-time-sad-moody-manga-lofi-style-3d-rendering_717906-996.jpg?w=2000'
+								}
+								className={clsx(
+									'absolute inset-0 h-full w-full bg-black  object-cover object-center brightness-50 transition duration-500 group-hover:blur-[3px]',
+								)}
 								alt="Album cover art"
 								fill
-								style={{ objectFit: 'cover' }}
+								style={{objectFit: 'cover'}}
 							/>
 						</span>
 
@@ -192,6 +196,6 @@ export default function Home(props: Props) {
 			<div className="col-span-6 space-y-4 rounded-2xl bg-darkpurple p-6 text-black md:col-span-6">
 				<ContactForm />
 			</div>
-		</main >
+		</main>
 	);
 }
