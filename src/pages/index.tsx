@@ -10,8 +10,6 @@ import {ContactForm} from '../components/contact-form';
 import {CardHoverEffect, hoverClassName} from '../components/hover-card';
 import {Time} from '../components/time';
 import {useUpdatingLanyard} from '../hooks/lanyard';
-import me from '../images/me.jpg';
-import {env} from '../server/env';
 import {getLanyard} from '../server/lanyard';
 import {age, discordId} from '../utils/constants';
 import {formatList} from '../utils/lists';
@@ -19,8 +17,9 @@ import {AboutMe} from '../components/about-me';
 import {Discord} from '../components/Discord';
 import {Technologies} from '../components/Technologies';
 import {Config} from '../components/Config';
-import back from '../images/back.png';
 import Letterboxd from './Letterboxd';
+import { useLetterboxd } from '../hooks/useLetterboxd';
+import { movieInitial } from '../utils/constants';
 
 export interface Props {
 	lanyard: Data;
@@ -29,8 +28,7 @@ export interface Props {
 //commenting this breaks the build
 export const getStaticProps: GetStaticProps<Props> = async () => {
 	const lanyard = await getLanyard(discordId);
-	// const location = await lanyard.kv.location ?? env.DEFAULT_LOCATION;
-
+	// const location = await lanyard.kv.location;
 	// const map = getMapURL(location);
 
 	return {
