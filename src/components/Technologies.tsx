@@ -1,4 +1,4 @@
-import {BsFillTerminalFill} from 'react-icons/bs';
+import { BsFillTerminalFill } from 'react-icons/bs';
 import {
 	SiArchlinux,
 	SiBabel,
