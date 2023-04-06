@@ -3,23 +3,21 @@ import type {GetStaticProps} from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import {HiOutlineExternalLink} from 'react-icons/hi';
-import bladen from '../images/bladen.png';
-import {SiSpotify, SiTwitter, SiGithub} from 'react-icons/si';
+import {SiGithub, SiSpotify, SiTwitter} from 'react-icons/si';
 import type {Data} from 'use-lanyard';
+import {AboutMe} from '../components/aboutMe';
+import {Config} from '../components/config';
 import {ContactForm} from '../components/contactForm';
+import {Discord} from '../components/discord';
 import {CardHoverEffect, hoverClassName} from '../components/hover-card';
+import {Technologies} from '../components/technologies';
 import {Time} from '../components/time';
 import {useUpdatingLanyard} from '../hooks/lanyard';
+import bladen from '../images/bladen.png';
 import {getLanyard} from '../server/lanyard';
-import {age, discordId} from '../utils/constants';
+import {discordId} from '../utils/constants';
 import {formatList} from '../utils/lists';
-import {AboutMe} from '../components/aboutMe';
-import {Discord} from '../components/discord';
-import {Technologies} from '../components/technologies';
-import {Config} from '../components/config';
 import Letterboxd from './Letterboxd';
-import { useLetterboxd } from '../hooks/useLetterboxd';
-import { movieInitial } from '../utils/constants';
 
 export interface Props {
 	lanyard: Data;
@@ -28,8 +26,6 @@ export interface Props {
 //commenting this breaks the build
 export const getStaticProps: GetStaticProps<Props> = async () => {
 	const lanyard = await getLanyard(discordId);
-	// const location = await lanyard.kv.location;
-	// const map = getMapURL(location);
 
 	return {
 		//causes re-renders every 10 seconds

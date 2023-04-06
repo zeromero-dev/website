@@ -1,16 +1,17 @@
+import {BsFillTerminalFill} from 'react-icons/bs';
 import {
-	SiObsidian,
-	SiPnpm,
-	SiPython,
+	SiArchlinux,
 	SiBabel,
 	SiDiscord,
 	SiDocker,
 	SiGit,
-	SiArchlinux,
 	SiJavascript,
 	SiMongodb,
 	SiNextdotjs,
+	SiObsidian,
+	SiPnpm,
 	SiPostgresql,
+	SiPython,
 	SiReact,
 	SiReactquery,
 	SiSpotify,
@@ -19,7 +20,6 @@ import {
 	SiVisualstudiocode,
 	SiWebpack,
 } from 'react-icons/si';
-import {BsFillTerminalFill} from 'react-icons/bs';
 
 export const Technologies = () => {
 	return (
