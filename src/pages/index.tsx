@@ -1,22 +1,22 @@
 import clsx from 'clsx';
-import type {GetStaticProps} from 'next';
+import type { GetStaticProps } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import {HiOutlineExternalLink} from 'react-icons/hi';
-import {SiGithub, SiSpotify, SiTwitter} from 'react-icons/si';
-import type {Data} from 'use-lanyard';
-import {AboutMe} from '../components/aboutMe';
-import {Config} from '../components/config';
-import {ContactForm} from '../components/contactForm';
-import {Discord} from '../components/discord';
-import {CardHoverEffect, hoverClassName} from '../components/hover-card';
-import {Technologies} from '../components/technologies';
-import {Time} from '../components/time';
-import {useUpdatingLanyard} from '../hooks/lanyard';
+import { HiOutlineExternalLink } from 'react-icons/hi';
+import { SiGithub, SiSpotify, SiTwitter } from 'react-icons/si';
+import type { Data } from 'use-lanyard';
+import { AboutMe } from '../components/aboutMe';
+import { ConfigComponent } from '../components/config';
+import { ContactForm } from '../components/contactForm';
+import { Discord } from '../components/discord';
+import { CardHoverEffect, hoverClassName } from '../components/hover-card';
+import { Technologies } from '../components/technologies';
+import { Time } from '../components/time';
+import { useUpdatingLanyard } from '../hooks/lanyard';
 import bladen from '../images/bladen.png';
-import {getLanyard} from '../server/lanyard';
-import {discordId} from '../utils/constants';
-import {formatList} from '../utils/lists';
+import { getLanyard } from '../server/lanyard';
+import { discordId } from '../utils/constants';
+import { formatList } from '../utils/lists';
 import Letterboxd from './Letterboxd';
 
 export interface Props {
@@ -30,12 +30,12 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 	return {
 		//causes re-renders every 10 seconds
 		revalidate: 10,
-		props: {lanyard},
+		props: { lanyard },
 	};
 };
 
 export default function Home(props: Props) {
-	const {data: lanyard} = useUpdatingLanyard(discordId, props.lanyard);
+	const { data: lanyard } = useUpdatingLanyard(discordId, props.lanyard);
 
 	const status = lanyard.discord_status ?? 'offline';
 
@@ -78,7 +78,7 @@ export default function Home(props: Props) {
 							src={bladen}
 							alt="bacgkround image"
 							fill
-							style={{objectFit: 'cover'}}
+							style={{ objectFit: 'cover' }}
 							className="brightness-[1.4] "
 						/>
 						<span className="absolute inset-0 bg-neutral-900/50" />
@@ -121,7 +121,7 @@ export default function Home(props: Props) {
 								)}
 								alt="Album cover art"
 								fill
-								style={{objectFit: 'cover'}}
+								style={{ objectFit: 'cover' }}
 							/>
 						</span>
 
@@ -186,7 +186,7 @@ export default function Home(props: Props) {
 			</CardHoverEffect>
 			<Letterboxd />
 			<Technologies />
-			<Config />
+			<ConfigComponent />
 			<div className="col-span-6 space-y-4 rounded-2xl bg-darkpurple p-6 text-black md:col-span-6">
 				<ContactForm />
 			</div>
