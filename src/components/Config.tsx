@@ -1,4 +1,4 @@
-export const Config = () => {
+export const ConfigComponent = () => {
 	return (
 		<div className="col-span-6 space-y-2 rounded-2xl bg-mainblue p-6 dark:bg-mainblue md:col-span-4">
 			<h2 className="font-title text-xl font-bold">~/.config</h2>
