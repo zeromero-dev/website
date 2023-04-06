@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import {motion} from 'framer-motion';
 import {useEffect, useRef, useState} from 'react';
-import {daysUntilBirthday, UKTimeFormatter} from '../utils/constants';
+import {UATimeFormatter, daysUntilBirthday} from '../utils/constants';
 
 function Night({time}: {time: Date}) {
 	const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -44,10 +44,10 @@ function Night({time}: {time: Date}) {
 					className={clsx('font-title text-2xl', 'text-glow-sky-900 dark:text-glow-sky-500')}
 					suppressHydrationWarning
 				>
-					{UKTimeFormatter.format(time)}
+					{UATimeFormatter.format(time)}
 				</h2>
 
-				<p className={clsx('text-xs font-light', 'text-glow-sky-900 dark:text-glow-sky-500')}>in the uk</p>
+				<p className={clsx('text-xs font-light', 'text-glow-sky-900 dark:text-glow-sky-500')}>In Ukraine</p>
 			</div>
 		</div>
 	);
@@ -59,11 +59,11 @@ function Day({time}: {time: Date}) {
 			<div className="flex w-full items-center justify-center">
 				<div className="opacity-85 flex items-baseline space-x-1 md:space-x-2">
 					<div className="flex flex-col">
-						<div className="font-title text-2xl text-white">{UKTimeFormatter.format(time)}</div>
+						<div className="font-title text-2xl text-white">{UATimeFormatter.format(time)}</div>
 						<p
 							className={clsx('text-center text-xs font-light', 'text-white text-glow-sky-900 dark:text-glow-sky-500')}
 						>
-							in the uk
+							in Ukraine
 						</p>
 					</div>
 				</div>
@@ -77,7 +77,7 @@ function Day({time}: {time: Date}) {
 				transition={{
 					duration: 4,
 					ease: 'easeInOut',
-					repeat: Infinity,
+					repeat: Number.POSITIVE_INFINITY,
 					repeatType: 'reverse',
 				}}
 				className="pointer-events-none absolute bottom-0 right-0 rounded-tl-full bg-white/10 pt-2 pl-2 md:pt-4 md:pl-4"
@@ -91,7 +91,7 @@ function Day({time}: {time: Date}) {
 								transition={{
 									duration: 4,
 									ease: 'easeInOut',
-									repeat: Infinity,
+									repeat: Number.POSITIVE_INFINITY,
 									repeatType: 'reverse',
 								}}
 								className="relative h-5 w-5 rounded-tl-full bg-yellow-200"

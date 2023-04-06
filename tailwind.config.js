@@ -1,4 +1,5 @@
 // @ts-check
+/* eslint-disable unicorn/prefer-module */
 
 const defaultTheme = require('tailwindcss/defaultTheme');
 const {default: flattenColorPalette} = require('tailwindcss/lib/util/flattenColorPalette');
@@ -13,11 +14,18 @@ module.exports = {
 		},
 		extend: {
 			colors: {
+				mainblack: '#191825',
+				mainblue: '#865DFF',
+				pinker: '#E384FF',
 				blurple: '#5865F2',
+				darkpurple: '#b569cc',
+				darkpink: '#69335f',
+				blacks: '#202830',
 			},
 		},
 	},
 	plugins: [
+		require('tailwind-scrollbar-hide'),
 		require('@tailwindcss/forms'),
 		{
 			handler: tw => {

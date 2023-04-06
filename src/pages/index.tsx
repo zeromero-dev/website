@@ -3,58 +3,34 @@ import type {GetStaticProps} from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import {HiOutlineExternalLink} from 'react-icons/hi';
-import {
-	SiAmazonaws,
-	SiBabel,
-	SiDiscord,
-	SiDocker,
-	SiGit,
-	SiGithub,
-	SiGo,
-	SiJavascript,
-	SiMongodb,
-	SiNextdotjs,
-	SiNodedotjs,
-	SiPostgresql,
-	SiReact,
-	SiRedis,
-	SiSpotify,
-	SiTailwindcss,
-	SiTwitter,
-	SiTypescript,
-	SiVisualstudiocode,
-	SiWebpack,
-	SiWebstorm,
-	SiYarn,
-} from 'react-icons/si';
+import {SiGithub, SiSpotify, SiTwitter} from 'react-icons/si';
 import type {Data} from 'use-lanyard';
-import {ContactForm} from '../components/contact-form';
+import {AboutMe} from '../components/aboutMe';
+import {Config} from '../components/config';
+import {ContactForm} from '../components/contactForm';
+import {Discord} from '../components/discord';
 import {CardHoverEffect, hoverClassName} from '../components/hover-card';
+import {Technologies} from '../components/technologies';
 import {Time} from '../components/time';
 import {useUpdatingLanyard} from '../hooks/lanyard';
-import matrix from '../images/matrix.gif';
-import me from '../images/me.jpg';
-import {getMapURL} from '../server/apple-maps';
-import {env} from '../server/env';
+import bladen from '../images/bladen.png';
 import {getLanyard} from '../server/lanyard';
-import {age, discordId} from '../utils/constants';
+import {discordId} from '../utils/constants';
 import {formatList} from '../utils/lists';
+import Letterboxd from './Letterboxd';
 
 export interface Props {
 	lanyard: Data;
-	map: string;
-	location: string;
+	// location: string;
 }
-
+//commenting this breaks the build
 export const getStaticProps: GetStaticProps<Props> = async () => {
 	const lanyard = await getLanyard(discordId);
-	const location = lanyard.kv.location ?? env.DEFAULT_LOCATION;
-
-	const map = getMapURL(location);
 
 	return {
+		//causes re-renders every 10 seconds
 		revalidate: 10,
-		props: {map, location, lanyard},
+		props: {lanyard},
 	};
 };
 
@@ -64,44 +40,15 @@ export default function Home(props: Props) {
 	const status = lanyard.discord_status ?? 'offline';
 
 	return (
-		<main className="mx-auto grid max-w-3xl grid-cols-6 gap-6 px-6 pb-40 pt-16">
-			<div className="p-200 col-span-4 flex items-center justify-center overflow-hidden rounded-2xl bg-pink-200 dark:border-pink-500 dark:bg-pink-500/20 dark:backdrop-blur-2xl md:col-span-4 md:h-52">
-				<div className="flex flex-col items-center space-y-4 py-8 px-6 md:flex-row md:space-y-0 md:space-x-4">
-					<Image
-						src={me}
-						placeholder="blur"
-						height={96}
-						width={96}
-						className="h-24 w-24 rounded-full border border-pink-500 object-cover"
-						alt="Photo of me"
-					/>
-
-					<div className="space-y-1">
-						<h1 className="text-center font-title text-xl font-bold tracking-tighter text-pink-900 dark:text-pink-300 dark:text-glow-pink-500/50 md:text-left">
-							Alistair Smith
-						</h1>
-
-						<p className="text-center text-pink-800 dark:text-pink-300/95 dark:text-glow-pink-500/50 md:text-left">
-							{age} y/o full stack TypeScript engineer 🪄
-						</p>
-
-						<p className="text-center text-pink-800 dark:text-pink-300/80 dark:text-glow-pink-500/30 md:text-left">
-							<Link href="https://alistair.blog" target="_blank" rel="noopener noreferrer">
-								blog ↗️
-							</Link>
-						</p>
-					</div>
-				</div>
-			</div>
-
+		<main className="mx-auto grid max-w-3xl grid-cols-6 gap-6 px-6 pb-40 pt-16 ">
+			<AboutMe />
 			<CardHoverEffect className="col-span-2 h-full">
 				<Link
-					href="https://twitter.com/alistaiir"
+					href="https://twitter.com/zeromerodev"
 					target="_blank"
 					rel="noopener noreferrer"
 					className={clsx(
-						'flex h-full items-center justify-center rounded-2xl bg-sky-500 text-4xl text-white',
-						hoverClassName,
+						'flex h-full items-center justify-center rounded-2xl bg-mainblue text-4xl text-white hover:border-pink-500/50',
 					)}
 				>
 					<span className="sr-only">Twitter</span>
@@ -110,34 +57,12 @@ export default function Home(props: Props) {
 					</span>
 				</Link>
 			</CardHoverEffect>
-
-			<div
-				className={clsx(
-					'col-span-3 flex h-52 items-center justify-center rounded-2xl text-4xl md:col-span-2',
-					{
-						online: 'bg-green-500 text-green-50',
-						idle: 'bg-orange-400 text-orange-50 ',
-						dnd: 'bg-red-500 text-red-50',
-						offline: 'bg-blurple text-white/90',
-					}[status],
-				)}
-			>
-				<div className="-rotate-[4deg] scale-[1] space-y-1 text-center md:scale-[1.2]">
-					<h2>
-						<SiDiscord className="inline" /> <span>{status}</span>
-					</h2>
-
-					<p className="text-base">
-						{lanyard.discord_user.username}#{lanyard.discord_user.discriminator}
-					</p>
-				</div>
-			</div>
-
+			<Discord lanyard={lanyard} status={status} />
 			<Time />
 
 			<CardHoverEffect className="col-span-3 h-full md:col-span-3">
 				<Link
-					href="https://github.com/alii"
+					href="https://github.com/zeromero-dev"
 					target="_blank"
 					rel="noopener noreferrer"
 					className={clsx(
@@ -145,13 +70,16 @@ export default function Home(props: Props) {
 						hoverClassName,
 					)}
 				>
-					<span aria-hidden className="pointer-events-none absolute inset-0 -z-20">
+					<span
+						aria-hidden
+						className="pointer-events-none absolute inset-0 -z-20 transition duration-300 group-hover:blur-[3px]"
+					>
 						<Image
-							src={matrix}
-							alt="The Matrix scrolling characters effect"
+							src={bladen}
+							alt="bacgkround image"
 							fill
 							style={{objectFit: 'cover'}}
-							className="brightness-[0.7]"
+							className="brightness-[1.4] "
 						/>
 						<span className="absolute inset-0 bg-neutral-900/50" />
 					</span>
@@ -166,25 +94,34 @@ export default function Home(props: Props) {
 					<span className="space-y-0.5 px-6 pb-6">
 						<span className="block font-title font-bold">github</span>
 
-						<span className="block text-sm">my open source work &amp; contributions</span>
+						<span className="block text-sm">my profile on github</span>
 					</span>
 				</Link>
 			</CardHoverEffect>
 
+			{/* Spotify  copmonent*/}
 			<CardHoverEffect className="col-span-3 h-52">
 				{!lanyard?.spotify || !lanyard.spotify.album_art_url ? (
 					<Link
-						href="https://open.spotify.com/playlist/18R9Cntl2PZEaGMLz4cyX2"
+						href="https://open.spotify.com/playlist/37i9dQZF1EVKuMoAJjoTIw?si=ff54ca7cd1ae485e"
 						target="_blank"
 						rel="noopener noreferrer"
-						className={clsx('group relative flex h-full overflow-hidden rounded-2xl', hoverClassName)}
+						className={clsx(
+							'group relative flex h-full w-full flex-col justify-between overflow-hidden rounded-2xl text-white',
+							hoverClassName,
+						)}
 					>
 						<span className="absolute inset-0 -z-10">
-							{/* eslint-disable-next-line @next/next/no-img-element */}
-							<img
-								src={'https://i.scdn.co/image/ab67706c0000da84e581815a92946c295b02b936'}
-								className="absolute inset-0 h-full w-full bg-black  object-cover object-center brightness-50"
+							<Image
+								src={
+									'https://img.freepik.com/premium-photo/cute-anime-woman-looking-cityscape-by-night-time-sad-moody-manga-lofi-style-3d-rendering_717906-996.jpg?w=2000'
+								}
+								className={clsx(
+									'absolute inset-0 h-full w-full bg-black  object-cover object-center brightness-50 transition duration-500 group-hover:blur-[3px]',
+								)}
 								alt="Album cover art"
+								fill
+								style={{objectFit: 'cover'}}
 							/>
 						</span>
 
@@ -196,10 +133,11 @@ export default function Home(props: Props) {
 
 							<div className="space-y-0.5">
 								<h2 className="font-title font-bold">
-									<span className="font-medium">playlist:</span>early travel
+									<span className="font-medium">my vibe is: </span>
+									moody
 								</h2>
 
-								<p className="text-sm">because you had to get a 3 hour bus journey in the early hours</p>
+								<p className="text-sm">moody playlist</p>
 							</div>
 						</span>
 					</Link>
@@ -210,19 +148,19 @@ export default function Home(props: Props) {
 						rel="noopener noreferrer"
 						className={clsx('group relative flex h-full overflow-hidden rounded-2xl', hoverClassName)}
 					>
-						<span className="absolute inset-0 -z-10">
-							{/* eslint-disable-next-line @next/next/no-img-element */}
-							<img
+						<span className="absolute inset-0 -z-10 transition duration-300 group-hover:blur-[3px]">
+							<Image
 								src={`${lanyard.spotify.album_art_url}?cache=${Date.now()}`}
 								className="absolute inset-0 h-full w-full bg-black object-cover object-center brightness-50 transition-all duration-500 will-change-[transform,_filter] group-hover:scale-[1.15] group-hover:brightness-[0.4]"
 								alt="Album cover art"
+								fill
 							/>
 						</span>
 
 						<span className="flex flex-1 flex-col justify-between p-6 text-white">
 							<span className="flex justify-between">
 								<SiSpotify className="text-2xl" />
-								<HiOutlineExternalLink className="text-xl opacity-50 transition duration-500 group-hover:opacity-100" />
+								<HiOutlineExternalLink className="text-xl opacity-50 transition duration-500 group-hover:opacity-100  " />
 							</span>
 
 							<span>
@@ -246,82 +184,10 @@ export default function Home(props: Props) {
 					</Link>
 				)}
 			</CardHoverEffect>
-
-			<div className="group relative col-span-3 flex h-full min-h-[13rem] flex-shrink-0 overflow-hidden rounded-2xl">
-				<Image
-					src={props.map}
-					className="bg-black"
-					fill
-					alt="A map locating roughly where I am right now"
-					style={{objectFit: 'cover'}}
-				/>
-
-				<div className="absolute top-1/2 left-1/2 z-10 flex w-full flex-shrink-0 -translate-x-1/2 -translate-y-1/2 flex-col items-center space-y-2">
-					<div aria-hidden className="absolute translate-y-[14px]">
-						<span className="block h-12 w-12 animate-ping rounded-full bg-lime-500 duration-1000" />
-					</div>
-
-					<Image
-						src={me}
-						alt="Photo of me above a map of my current location"
-						height={60}
-						width={60}
-						className="h-15 w-15 z-20 rounded-full border-2 border-black transition-transform duration-500 group-hover:-rotate-[10deg] group-hover:scale-110"
-					/>
-
-					<p className="rounded-full bg-white/10 pl-2.5 pr-3 font-bold text-white/95 backdrop-blur-md">
-						📍 {props.location}
-					</p>
-				</div>
-			</div>
-
-			<div className="col-span-3 flex items-center justify-center rounded-2xl bg-fuchsia-700 p-6 text-fuchsia-100 md:col-span-2">
-				<div className="grid w-full grid-cols-4 grid-rows-4 gap-4 [&>svg]:w-full [&>svg]:text-center">
-					<SiTypescript size={24} />
-					<SiDocker size={24} />
-					<SiNextdotjs size={24} />
-					<SiRedis size={24} />
-					<SiPostgresql size={24} />
-					<SiReact size={24} />
-					<SiTailwindcss size={24} />
-					<SiNodedotjs size={24} />
-					<SiGo size={24} />
-					<SiJavascript size={24} />
-					<SiAmazonaws size={24} />
-					<SiWebstorm size={24} />
-					<SiWebpack size={24} />
-					<SiBabel size={24} />
-					<SiYarn size={24} />
-					<SiGit size={24} />
-					<SiSpotify size={24} />
-					<SiMongodb size={24} />
-					<SiVisualstudiocode size={24} />
-					<SiDiscord size={24} />
-				</div>
-			</div>
-
-			<div className="col-span-6 space-y-2 rounded-2xl bg-yellow-200 p-6 dark:bg-indigo-800 md:col-span-4">
-				<h2 className="font-title text-xl font-bold">
-					hello world <span className="inline dark:hidden">🌻</span>
-					<span className="hidden dark:inline">⭐</span>
-				</h2>
-
-				<p>
-					My name is Alistair, I'm a software engineer from the United Kingdom. I've been programming for as long as I
-					can remember, and I'm currently spending my time with the wonderful people at{' '}
-					<Link className="underline" href="https://hop.io">
-						Hop
-					</Link>
-					.
-				</p>
-
-				<p>
-					Beyond programming, I'm really interested in music production and you can often catch spending time messing
-					with DJ decks and my Maschine. Either that or I'll be out riding my Boosted Board 🛹
-				</p>
-			</div>
-
-			<div className="col-span-6 space-y-4 rounded-2xl bg-lime-400 p-6 text-black md:col-span-6">
+			<Letterboxd />
+			<Technologies />
+			<Config />
+			<div className="col-span-6 space-y-4 rounded-2xl bg-darkpurple p-6 text-black md:col-span-6">
 				<ContactForm />
 			</div>
 		</main>
