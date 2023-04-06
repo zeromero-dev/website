@@ -7,7 +7,6 @@ export function debounce<F extends Function>(func: F, ms: number) {
 		if (timeout !== null) {
 			clearTimeout(timeout);
 		}
-
 		timeout = setTimeout(() => func(...args), ms);
 	};
 
