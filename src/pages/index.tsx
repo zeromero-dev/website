@@ -14,6 +14,7 @@ import { Technologies } from '../components/technologies';
 import { Time } from '../components/time';
 import { useUpdatingLanyard } from '../hooks/lanyard';
 import bladen from '../images/bladen.png';
+import playlist from '../images/playlist.png'
 import { getLanyard } from '../server/lanyard';
 import { discordId } from '../utils/constants';
 import { formatList } from '../utils/lists';
@@ -113,9 +114,7 @@ export default function Home(props: Props) {
 					>
 						<span className="absolute inset-0 -z-10">
 							<Image
-								src={
-									'https://img.freepik.com/premium-photo/cute-anime-woman-looking-cityscape-by-night-time-sad-moody-manga-lofi-style-3d-rendering_717906-996.jpg?w=2000'
-								}
+								src={playlist}
 								className={clsx(
 									'absolute inset-0 h-full w-full bg-black  object-cover object-center brightness-50 transition duration-500 group-hover:blur-[3px]',
 								)}
@@ -149,11 +148,10 @@ export default function Home(props: Props) {
 						className={clsx('group relative flex h-full overflow-hidden rounded-2xl', hoverClassName)}
 					>
 						<span className="absolute inset-0 -z-10 transition duration-300 group-hover:blur-[3px]">
-							<Image
+							<img
 								src={`${lanyard.spotify.album_art_url}?cache=${Date.now()}`}
 								className="absolute inset-0 h-full w-full bg-black object-cover object-center brightness-50 transition-all duration-500 will-change-[transform,_filter] group-hover:scale-[1.15] group-hover:brightness-[0.4]"
 								alt="Album cover art"
-								fill
 							/>
 						</span>
 
