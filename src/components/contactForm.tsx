@@ -59,7 +59,7 @@ export function ContactForm() {
 				</label>
 
 				<label htmlFor="body">
-					<textarea id="body" name="body" rows={5} required placeholder="Your message" className="w-full resize-y" />
+					<textarea id="body" name="body" rows={5} required placeholder="Your message" minLength={10} maxLength={500} className="w-full resize-y" />
 				</label>
 				{/* Captcha */}
 				<Turnstile

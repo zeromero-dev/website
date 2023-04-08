@@ -1,5 +1,4 @@
 import {useLetterboxd} from '../hooks/useLetterboxd';
-import back from '../images/back.png';
 
 import Link from 'next/link';
 import {IoRepeat} from 'react-icons/io5';

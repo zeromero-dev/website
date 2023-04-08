@@ -19,7 +19,6 @@ import { getLanyard } from '../server/lanyard';
 import { discordId } from '../utils/constants';
 import { formatList } from '../utils/lists';
 import Letterboxd from './Letterboxd';
-
 export interface Props {
 	lanyard: Data;
 	// location: string;
@@ -43,6 +42,8 @@ export default function Home(props: Props) {
 	return (
 		<main className="mx-auto grid max-w-3xl grid-cols-6 gap-6 px-6 pb-40 pt-16 ">
 			<AboutMe />
+
+			{/* //@ts-ignore */}
 			<CardHoverEffect className="col-span-2 h-full">
 				<Link
 					href="https://twitter.com/zeromerodev"
