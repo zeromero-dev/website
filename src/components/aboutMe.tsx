@@ -4,13 +4,20 @@ import { useState } from 'react';
 import { HiOutlineExternalLink } from 'react-icons/hi';
 import me from '../images/roma.svg';
 import { age } from '../utils/constants';
-import { useRive } from '@rive-app/react-canvas';
+import { useRive, Layout, Fit, Alignment  } from '@rive-app/react-canvas';
+
+import type layout from "@rive-app/react-canvas"
 
 export const AboutMe = () => {
 	const [showPopup, setShowPopup] = useState(false);
 	const { rive, RiveComponent } = useRive({
 		src: 'wokign.riv',
+		animations: 'eyeSiding',
 		autoplay: false,
+		layout: new Layout({
+			fit: Fit.Cover,
+			alignment: Alignment.TopCenter,
+		  }),
 	});
 
 	const handleClick = () => {
@@ -22,7 +29,7 @@ export const AboutMe = () => {
 	};
 	return (
 		<div className="p-200 col-span-4 flex items-center justify-center overflow-hidden rounded-2xl bg-darkpurple dark:border-darkpurple dark:bg-darkpurple  md:col-span-4 md:h-52">
-			<div className="flex flex-col items-center space-y-4 py-8 px-6 md:flex-row md:space-y-0 md:space-x-4">
+			<div className=" flex flex-col items-center space-y-4 py-8 px-6 md:flex-row md:space-y-0 md:space-x-4">
 				{/* <Image
 					src={me}
 					// placeholder="blur"
@@ -31,11 +38,11 @@ export const AboutMe = () => {
 					className="h-24 w-24 rounded-full border border-darkpink object-cover"
 					alt="Photo of me"
 				/> */}
-				
+
 				<RiveComponent
 					onMouseEnter={() => rive && rive.play()}
 					onMouseLeave={() => rive && rive.pause()}
-					className='h-36 w-36 rounded-full border border-darkpink object-cover'
+					className='h-32 w-32 rounded-lg border-2 border-darkpink object-cover'
 				/>
 				<div className="space-y-1">
 					<h1 className="text-center font-title text-xl font-bold tracking-tighter text-pink-900 dark:text-pink-300 dark:text-glow-pink-500/50 md:text-left">
