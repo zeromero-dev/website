@@ -1,10 +1,10 @@
-import {useLetterboxd} from '../hooks/useLetterboxd';
+import { useLetterboxd } from '../hooks/useLetterboxd';
 
 import Link from 'next/link';
-import {IoRepeat} from 'react-icons/io5';
+import { IoRepeat } from 'react-icons/io5';
 
 export const Letterboxd = () => {
-	const {items} = useLetterboxd();
+	const { items } = useLetterboxd();
 
 	if (!items) {
 		return <div>Loading data...</div>;

@@ -1,12 +1,8 @@
-import Image from 'next/image';
+import { Alignment, Fit, Layout, useRive } from '@rive-app/react-canvas';
 import Link from 'next/link';
 import { useState } from 'react';
 import { HiOutlineExternalLink } from 'react-icons/hi';
-import me from '../images/roma.svg';
 import { age } from '../utils/constants';
-import { useRive, Layout, Fit, Alignment  } from '@rive-app/react-canvas';
-
-import type layout from "@rive-app/react-canvas"
 
 export const AboutMe = () => {
 	const [showPopup, setShowPopup] = useState(false);
@@ -17,7 +13,7 @@ export const AboutMe = () => {
 		layout: new Layout({
 			fit: Fit.Cover,
 			alignment: Alignment.TopCenter,
-		  }),
+		}),
 	});
 
 	const handleClick = () => {
@@ -42,7 +38,7 @@ export const AboutMe = () => {
 				<RiveComponent
 					onMouseEnter={() => rive && rive.play()}
 					onMouseLeave={() => rive && rive.pause()}
-					className='h-32 w-32 rounded-lg border-2 border-darkpink object-cover'
+					className="h-32 w-32 rounded-lg border-2 border-darkpink object-cover"
 				/>
 				<div className="space-y-1">
 					<h1 className="text-center font-title text-xl font-bold tracking-tighter text-pink-900 dark:text-pink-300 dark:text-glow-pink-500/50 md:text-left">

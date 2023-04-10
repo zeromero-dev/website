@@ -1,5 +1,5 @@
-import {Turnstile} from '@marsidev/react-turnstile';
-import {useState} from 'react';
+import { Turnstile } from '@marsidev/react-turnstile';
+import { useState } from 'react';
 import toast from 'react-hot-toast';
 
 export function ContactForm() {
@@ -31,7 +31,7 @@ export function ContactForm() {
 					setLoading(true);
 
 					const promise = fetch('/api/contact', {
-						headers: {'Content-Type': 'application/json'},
+						headers: { 'Content-Type': 'application/json' },
 						body: JSON.stringify(values),
 						method: 'POST',
 					});
@@ -59,12 +59,21 @@ export function ContactForm() {
 				</label>
 
 				<label htmlFor="body">
-					<textarea id="body" name="body" rows={5} required placeholder="Your message" minLength={10} maxLength={500} className="w-full resize-y" />
+					<textarea
+						id="body"
+						name="body"
+						rows={5}
+						required
+						placeholder="Your message"
+						minLength={10}
+						maxLength={500}
+						className="w-full resize-y"
+					/>
 				</label>
 				{/* Captcha */}
 				<Turnstile
-					options={{responseFieldName: 'turnstile'}}
-					style={{display: 'none'}}
+					options={{ responseFieldName: 'turnstile' }}
+					style={{ display: 'none' }}
 					siteKey="0x4AAAAAAADttFli5Zd3YOto"
 				/>
 
