@@ -10,7 +10,8 @@
 		"unicorn/no-null": "warn",
 		"react/no-unescaped-entities": "off",
 		"unicorn/prevent-abbreviations": "off",
-		"no-console": 2
+		"no-console": 2,
+		"@next/next/no-img-element": "off"
 	},
 	"parser": "@typescript-eslint/parser",
 	"plugins": ["react", "react-hooks"]

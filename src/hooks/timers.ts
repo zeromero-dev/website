@@ -1,6 +1,6 @@
-import {useEffect, type DependencyList} from 'react';
+import { useEffect, type DependencyList } from 'react';
 
-export function useInterval(ms: number, options: {callback: () => void; deps: DependencyList}) {
+export function useInterval(ms: number, options: { callback: () => void; deps: DependencyList }) {
 	useEffect(() => {
 		const id = setInterval(options.callback, ms);
 

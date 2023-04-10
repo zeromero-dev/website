@@ -1,4 +1,4 @@
-import type {NativeTimeout} from './types';
+import type { NativeTimeout } from './types';
 
 export function debounce<F extends Function>(func: F, ms: number) {
 	let timeout: NativeTimeout | null = null;

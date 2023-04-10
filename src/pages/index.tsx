@@ -1,6 +1,5 @@
 import clsx from 'clsx';
 import type { GetStaticProps } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
 import { HiOutlineExternalLink } from 'react-icons/hi';
 import { SiGithub, SiSpotify, SiTwitter } from 'react-icons/si';
@@ -13,15 +12,12 @@ import { CardHoverEffect, hoverClassName } from '../components/hover-card';
 import { Technologies } from '../components/technologies';
 import { Time } from '../components/time';
 import { useUpdatingLanyard } from '../hooks/lanyard';
-import bladen from '../images/bladen.png';
 import { getLanyard } from '../server/lanyard';
 import { discordId } from '../utils/constants';
 import { formatList } from '../utils/lists';
 import Letterboxd from './Letterboxd';
-
 export interface Props {
 	lanyard: Data;
-	// location: string;
 }
 //commenting this breaks the build
 export const getStaticProps: GetStaticProps<Props> = async () => {
@@ -42,6 +38,8 @@ export default function Home(props: Props) {
 	return (
 		<main className="mx-auto grid max-w-3xl grid-cols-6 gap-6 px-6 pb-40 pt-16 ">
 			<AboutMe />
+
+			{/* //@ts-ignore */}
 			<CardHoverEffect className="col-span-2 h-full">
 				<Link
 					href="https://twitter.com/zeromerodev"
@@ -74,13 +72,14 @@ export default function Home(props: Props) {
 						aria-hidden
 						className="pointer-events-none absolute inset-0 -z-20 transition duration-300 group-hover:blur-[3px]"
 					>
-						<Image
-							src={bladen}
+						{/* <Image
+							src='/bladen.png'
 							alt="bacgkround image"
 							fill
 							style={{ objectFit: 'cover' }}
 							className="brightness-[1.4] "
-						/>
+						/> */}
+						<img src="bladen.png" style={{ objectFit: 'fill' }} className="brightness-[1.4] w-full h-full" />
 						<span className="absolute inset-0 bg-neutral-900/50" />
 					</span>
 
@@ -112,16 +111,19 @@ export default function Home(props: Props) {
 						)}
 					>
 						<span className="absolute inset-0 -z-10">
-							<Image
-								src={
-									'https://img.freepik.com/premium-photo/cute-anime-woman-looking-cityscape-by-night-time-sad-moody-manga-lofi-style-3d-rendering_717906-996.jpg?w=2000'
-								}
+							{/* <Image
+								src={playlist}
 								className={clsx(
 									'absolute inset-0 h-full w-full bg-black  object-cover object-center brightness-50 transition duration-500 group-hover:blur-[3px]',
 								)}
 								alt="Album cover art"
 								fill
 								style={{ objectFit: 'cover' }}
+							/> */}
+							<img
+								src="playlist.png"
+								alt="album cover art"
+								className="absolute inset-0 h-full w-full bg-black  object-cover object-center brightness-50 transition duration-500 group-hover:blur-[3px]"
 							/>
 						</span>
 
@@ -149,11 +151,10 @@ export default function Home(props: Props) {
 						className={clsx('group relative flex h-full overflow-hidden rounded-2xl', hoverClassName)}
 					>
 						<span className="absolute inset-0 -z-10 transition duration-300 group-hover:blur-[3px]">
-							<Image
+							<img
 								src={`${lanyard.spotify.album_art_url}?cache=${Date.now()}`}
 								className="absolute inset-0 h-full w-full bg-black object-cover object-center brightness-50 transition-all duration-500 will-change-[transform,_filter] group-hover:scale-[1.15] group-hover:brightness-[0.4]"
 								alt="Album cover art"
-								fill
 							/>
 						</span>
 

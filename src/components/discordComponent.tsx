@@ -1,13 +1,13 @@
 import clsx from 'clsx';
-import {SiDiscord} from 'react-icons/si';
-import type {Data} from 'use-lanyard';
+import { SiDiscord } from 'react-icons/si';
+import type { Data } from 'use-lanyard';
 
 type DiscordProps = {
 	lanyard: Data;
 	status: 'online' | 'idle' | 'dnd' | 'offline';
 };
 
-export const Discord = ({lanyard, status}: DiscordProps) => {
+export const Discord = ({ lanyard, status }: DiscordProps) => {
 	return (
 		<div
 			className={clsx(

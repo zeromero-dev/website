@@ -1,12 +1,10 @@
-import Image from 'next/image';
-import {useLetterboxd} from '../hooks/useLetterboxd';
-import back from '../images/back.png';
+import { useLetterboxd } from '../hooks/useLetterboxd';
 
 import Link from 'next/link';
-import {IoRepeat} from 'react-icons/io5';
+import { IoRepeat } from 'react-icons/io5';
 
 export const Letterboxd = () => {
-	const {items} = useLetterboxd();
+	const { items } = useLetterboxd();
 
 	if (!items) {
 		return <div>Loading data...</div>;
@@ -18,13 +16,13 @@ export const Letterboxd = () => {
 		col-span-3 space-x-2 w-full overflow-hidden rounded-2xl p-6 pt-1 pl-1 pr-2 text-black md:col-span-3"
 		>
 			{/* I don't know man */}
-			<Image
+			{/* <img
 				src={back}
 				alt="bacgkround image"
 				fill
 				style={{objectFit: 'cover'}}
 				className="opacity-0 hover:blur-[3px]"
-			/>
+			/> */}
 			{/* <h1 className="text-white font-bold align-text-top">Recently watched</h1> */}
 			{items.map(item => {
 				return (
@@ -33,11 +31,9 @@ export const Letterboxd = () => {
 						<div className="relative h-full w-full">
 							{/* <img src={item.film.image.medium} alt={item.film.title} /> */}
 							<Link href={item.uri} target="_blank">
-								<Image
+								<img
 									src={item.film.image.medium}
 									alt={item.film.title}
-									width={400}
-									height={200}
 									className="h-full w-full rounded-lg object-cover transition duration-300 hover:blur-[3px]"
 								/>
 							</Link>

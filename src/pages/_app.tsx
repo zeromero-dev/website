@@ -1,9 +1,9 @@
 import '../globals.css';
 
-import {Inter_Tight, Overpass_Mono} from '@next/font/google';
-import type {AppProps} from 'next/app';
+import { Inter_Tight, Overpass_Mono } from '@next/font/google';
+import type { AppProps } from 'next/app';
 import Head from 'next/head';
-import {Toaster} from 'react-hot-toast';
+import { Toaster } from 'react-hot-toast';
 
 const title = Overpass_Mono({
 	subsets: ['latin'],
@@ -15,7 +15,7 @@ const inter = Inter_Tight({
 	weight: 'variable',
 });
 
-export default function App({Component, pageProps}: AppProps) {
+export default function App({ Component, pageProps }: AppProps) {
 	return (
 		<>
 			<style jsx global>

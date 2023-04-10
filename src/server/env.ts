@@ -1,4 +1,4 @@
-import {envsafe, str, url} from 'envsafe';
+import { envsafe, str, url } from 'envsafe';
 
 export const env = envsafe({
 	// APPLE_TEAM_ID: str(),

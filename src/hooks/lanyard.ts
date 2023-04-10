@@ -1,5 +1,5 @@
-import {useLanyard, type Data, type Snowflake} from 'use-lanyard';
-import {useInterval} from './timers';
+import { useLanyard, type Data, type Snowflake } from 'use-lanyard';
+import { useInterval } from './timers';
 
 export function useUpdatingLanyard(id: Snowflake, initialData: Data) {
 	const state = useLanyard(id, {
