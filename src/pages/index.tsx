@@ -79,7 +79,10 @@ export default function Home(props: Props) {
 							style={{ objectFit: 'cover' }}
 							className="brightness-[1.4] "
 						/> */}
-						<img src="bladen.png" style={{ objectFit: 'fill' }} className="brightness-[1.4] w-full h-full" />
+						<img
+							src="bladen.png"
+							style={{ objectFit: 'fill' }}
+							className="brightness-[1.4] w-full h-full" />
 						<span className="absolute inset-0 bg-neutral-900/50" />
 					</span>
 
@@ -110,7 +113,7 @@ export default function Home(props: Props) {
 							hoverClassName,
 						)}
 					>
-						<span className="absolute inset-0 -z-10">
+						<span className="absolute inset-0 -z-10 pointer-events-none transition duration-300 group-hover:blur-[3px]">
 							{/* <Image
 								src={playlist}
 								className={clsx(
@@ -123,7 +126,9 @@ export default function Home(props: Props) {
 							<img
 								src="playlist.png"
 								alt="album cover art"
-								className="absolute inset-0 h-full w-full bg-black  object-cover object-center brightness-50 transition duration-500 group-hover:blur-[3px]"
+								className={clsx(
+									"absolute inset-0 h-full w-full bg-black object-cover object-center brightness-50",
+									hoverClassName)}
 							/>
 						</span>
 
@@ -138,7 +143,6 @@ export default function Home(props: Props) {
 									<span className="font-medium">my vibe is: </span>
 									moody
 								</h2>
-
 								<p className="text-sm">moody playlist</p>
 							</div>
 						</span>
