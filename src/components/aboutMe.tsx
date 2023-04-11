@@ -26,14 +26,7 @@ export const AboutMe = () => {
 	return (
 		<div className="p-200 col-span-4 flex items-center justify-center overflow-hidden rounded-2xl bg-darkpurple dark:border-darkpurple dark:bg-darkpurple  md:col-span-4 md:h-52">
 			<div className=" flex flex-col items-center space-y-4 py-8 px-6 md:flex-row md:space-y-0 md:space-x-4">
-				{/* <Image
-					src={me}
-					// placeholder="blur"
-					height={104}
-					width={104}
-					className="h-24 w-24 rounded-full border border-darkpink object-cover"
-					alt="Photo of me"
-				/> */}
+				{/* className="h-24 w-24 rounded-full border border-darkpink object-cover" */}
 
 				<RiveComponent
 					onMouseEnter={() => rive && rive.play()}
@@ -46,7 +39,7 @@ export const AboutMe = () => {
 					</h1>
 
 					<p className="text-center text-pink-800 dark:text-pink-300/95 dark:text-glow-pink-500/50 md:text-left">
-						{age} y/o full stack TypeScript engineer 🪄
+						{age} y/o full stack TypeScript engineer
 					</p>
 
 					<p className="text-center text-pink-800 dark:text-pink-300/80 dark:text-glow-pink-500/30 md:text-left ">
