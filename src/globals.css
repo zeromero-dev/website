@@ -4,7 +4,7 @@
 
 body {
 	/* @apply bg-grid-neutral-200/40 bg-neutral-100 text-mainblack dark:bg-grid-neutral-800/50 dark:bg-mainblack dark:text-neutral-100; */
-	@apply bg-grid-neutral-200/40 bg-grid-neutral-800/50 bg-mainblack bg-neutral-100 text-mainblack text-neutral-100;
+	@apply bg-grid-neutral-200/40 bg-grid-neutral-800/50 bg-mainblack text-mainblack text-neutral-100;
 	/* background-color: #191825; */
 	/* background: linear-gradient(180deg, #191825 0%, #191825 100%); */
 }
