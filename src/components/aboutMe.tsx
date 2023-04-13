@@ -6,6 +6,7 @@ import { age } from '../utils/constants';
 
 export const AboutMe = () => {
 	const [showPopup, setShowPopup] = useState(false);
+
 	const { rive, RiveComponent } = useRive({
 		src: 'wokign.riv',
 		animations: 'eyeSiding',

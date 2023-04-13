@@ -12,34 +12,35 @@ import { CardHoverEffect, hoverClassName } from '../components/hover-card';
 import { Technologies } from '../components/technologies';
 import { Time } from '../components/time';
 import { useUpdatingLanyard } from '../hooks/lanyard';
+import { LetterboxdSchema } from '../hooks/useLetterboxd';
+import { getLetterboxd } from '../server/getLetterboxd';
 import { getLanyard } from '../server/lanyard';
-import { discordId } from '../utils/constants';
+import { discordId, movieInitial } from '../utils/constants';
 import { formatList } from '../utils/lists';
-import Letterboxd from './Letterboxd';
+import Letterboxd from '../components/letterboxd';
 export interface Props {
 	lanyard: Data;
+	movies: LetterboxdSchema;
 }
 //commenting this breaks the build
 export const getStaticProps: GetStaticProps<Props> = async () => {
 	const lanyard = await getLanyard(discordId);
-
+	const movies = await getLetterboxd();
 	return {
 		//causes re-renders every 10 seconds
 		revalidate: 10,
-		props: { lanyard },
+		props: { lanyard, movies },
 	};
 };
 
 export default function Home(props: Props) {
 	const { data: lanyard } = useUpdatingLanyard(discordId, props.lanyard);
-
+	const items = props.movies ?? movieInitial;
 	const status = lanyard.discord_status ?? 'offline';
 
 	return (
 		<main className="mx-auto grid max-w-3xl grid-cols-6 gap-6 px-6 pb-40 pt-16 ">
 			<AboutMe />
-
-			{/* //@ts-ignore */}
 			<CardHoverEffect className="col-span-2 h-full">
 				<Link
 					href="https://twitter.com/zeromerodev"
@@ -79,10 +80,7 @@ export default function Home(props: Props) {
 							style={{ objectFit: 'cover' }}
 							className="brightness-[1.4] "
 						/> */}
-						<img
-							src="bladen.png"
-							style={{ objectFit: 'fill' }}
-							className="brightness-[1.4] w-full h-full" />
+						<img src="bladen.png" style={{ objectFit: 'fill' }} className="brightness-[1.4] w-full h-full" />
 						<span className="absolute inset-0 bg-neutral-900/50" />
 					</span>
 
@@ -127,8 +125,9 @@ export default function Home(props: Props) {
 								src="playlist.png"
 								alt="album cover art"
 								className={clsx(
-									"absolute inset-0 h-full w-full bg-black object-cover object-center brightness-50",
-									hoverClassName)}
+									'absolute inset-0 h-full w-full bg-black object-cover object-center brightness-50',
+									hoverClassName,
+								)}
 							/>
 						</span>
 
@@ -189,7 +188,7 @@ export default function Home(props: Props) {
 					</Link>
 				)}
 			</CardHoverEffect>
-			<Letterboxd />
+			<Letterboxd items={items} />
 			<Technologies />
 			<ConfigComponent />
 			<div className="col-span-6 space-y-4 rounded-2xl bg-darkpurple p-6 text-black md:col-span-6">
