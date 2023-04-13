@@ -24,7 +24,7 @@ import {
 export const Technologies = () => {
 	return (
 		<div className="col-span-3 flex items-center justify-center rounded-2xl bg-mainblue p-6 text-fuchsia-100 md:col-span-2">
-			<div className="grid w-full grid-cols-4 grid-rows-4 gap-4 [&>svg]:w-full [&>svg]:text-center ">
+			<div className="grid w-full grid-cols-4 grid-rows-4 gap-2 [&>svg]:w-full [&>svg]:text-center md:gap-4 ">
 				<SiTypescript size={24} className="transition-transform duration-500 hover:scale-[1.6]" />
 				<SiDocker size={24} className="transition-transform duration-500 hover:scale-[1.6]" />
 				<SiNextdotjs size={24} className="transition-transform duration-500 hover:scale-[1.6]" />

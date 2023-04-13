@@ -22,13 +22,15 @@ export const Discord = ({ lanyard, status }: DiscordProps) => {
 		>
 			<div className="transform-gpu space-y-1 text-center transition hover:-rotate-[-10deg] hover:scale-[1.3] md:scale-[1.2]">
 				<div className="text-base">
-					<h2>
-						<SiDiscord className="mb-1 inline opacity-100 " /> {lanyard.discord_user.username}#
+					<div>
+						<SiDiscord className="mb-1 inline opacity-100 " /> {' '}
+						{lanyard.discord_user.username}#
 						{lanyard.discord_user.discriminator}
-					</h2>
+					</div>
 				</div>
 				<p
 					className={clsx(
+						"shrink w-full h-full",
 						{
 							online: 'bg-color-green-500 animate-blink',
 							idle: 'animate-shake bg-orange-400 text-orange-50',

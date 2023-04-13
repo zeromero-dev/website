@@ -73,7 +73,10 @@ export default function Home(props: Props) {
 						aria-hidden
 						className="pointer-events-none absolute inset-0 -z-20 transition duration-300 group-hover:blur-[3px]"
 					>
-						<img src="bladen.png" style={{ objectFit: 'fill' }} className="brightness-[1.4] w-full h-full" />
+						<img
+							src="bladen.png"
+							className="inset-0 h-full w-full object-cover object-center brightness-[1.4] transition-all duration-500 will-change-[transform,_filter] group-hover:scale-[1.15]"
+						/>
 						<span className="absolute inset-0 bg-neutral-900/50" />
 					</span>
 
@@ -104,7 +107,7 @@ export default function Home(props: Props) {
 							hoverClassName,
 						)}
 					>
-						<span className="absolute inset-0 -z-10 pointer-events-none transition duration-300 group-hover:blur-[3px]">
+						<span className="absolute bg-cover inset-0 -z-10 pointer-events-none transition duration-300 group-hover:blur-[3px]">
 							{/* <Image
 								src={playlist}
 								className={clsx(
@@ -117,10 +120,7 @@ export default function Home(props: Props) {
 							<img
 								src="playlist.png"
 								alt="album cover art"
-								className={clsx(
-									'absolute inset-0 h-full w-full bg-black object-cover object-center brightness-50',
-									hoverClassName,
-								)}
+								className="inset-0 h-full w-full bg-black object-cover object-center brightness-50 transition-all duration-500 will-change-[transform,_filter] group-hover:scale-[1.15] group-hover:brightness-[0.4]"
 							/>
 						</span>
 
