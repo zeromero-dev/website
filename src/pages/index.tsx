@@ -25,7 +25,7 @@ export interface Props {
 //commenting this breaks the build
 export const getStaticProps: GetStaticProps<Props> = async () => {
 	const lanyard = await getLanyard(discordId);
-	const movies = await getLetterboxd();
+	const movies = await getLetterboxd(movieInitial);
 	return {
 		//causes re-renders every 10 seconds
 		revalidate: 10,
