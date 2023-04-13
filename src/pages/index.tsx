@@ -9,6 +9,7 @@ import { ConfigComponent } from '../components/configComponent';
 import { ContactForm } from '../components/contactForm';
 import { Discord } from '../components/discordComponent';
 import { CardHoverEffect, hoverClassName } from '../components/hover-card';
+import Letterboxd from '../components/letterboxd';
 import { Technologies } from '../components/technologies';
 import { Time } from '../components/time';
 import { useUpdatingLanyard } from '../hooks/lanyard';
@@ -17,7 +18,6 @@ import { getLetterboxd } from '../server/getLetterboxd';
 import { getLanyard } from '../server/lanyard';
 import { discordId, movieInitial } from '../utils/constants';
 import { formatList } from '../utils/lists';
-import Letterboxd from '../components/letterboxd';
 export interface Props {
 	lanyard: Data;
 	movies: LetterboxdSchema;
@@ -73,13 +73,6 @@ export default function Home(props: Props) {
 						aria-hidden
 						className="pointer-events-none absolute inset-0 -z-20 transition duration-300 group-hover:blur-[3px]"
 					>
-						{/* <Image
-							src='/bladen.png'
-							alt="bacgkround image"
-							fill
-							style={{ objectFit: 'cover' }}
-							className="brightness-[1.4] "
-						/> */}
 						<img src="bladen.png" style={{ objectFit: 'fill' }} className="brightness-[1.4] w-full h-full" />
 						<span className="absolute inset-0 bg-neutral-900/50" />
 					</span>
