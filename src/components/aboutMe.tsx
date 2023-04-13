@@ -1,4 +1,6 @@
-import { Alignment, Fit, Layout, useRive } from '@rive-app/react-canvas';
+import { Alignment, Fit, Layout, RuntimeLoader, useRive } from '@rive-app/react-canvas';
+//@ts-ignore
+import riveWasmUrl from '@rive-app/canvas/rive.wasm';
 import Link from 'next/link';
 import { useState } from 'react';
 import { HiOutlineExternalLink } from 'react-icons/hi';
@@ -6,6 +8,8 @@ import { age } from '../utils/constants';
 
 export const AboutMe = () => {
 	const [showPopup, setShowPopup] = useState(false);
+	RuntimeLoader.setWasmUrl(riveWasmUrl);
+
 	const { rive, RiveComponent } = useRive({
 		src: 'wokign.riv',
 		animations: 'eyeSiding',

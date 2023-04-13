@@ -1,10 +1,10 @@
-import { useLetterboxd } from '../hooks/useLetterboxd';
+import { LetterboxdSchema } from '../hooks/useLetterboxd';
 
 import Link from 'next/link';
 import { IoRepeat } from 'react-icons/io5';
 
-export const Letterboxd = () => {
-	const { items } = useLetterboxd();
+export const Letterboxd = ({ items }: any) => {
+	// const { items } = useLetterboxd();
 
 	if (!items) {
 		return <div>Loading data...</div>;
@@ -24,7 +24,7 @@ export const Letterboxd = () => {
 				className="opacity-0 hover:blur-[3px]"
 			/> */}
 			{/* <h1 className="text-white font-bold align-text-top">Recently watched</h1> */}
-			{items.map(item => {
+			{items.map((item: LetterboxdSchema) => {
 				return (
 					<div key={item.uri} className="content-evenly col-span-2 rounded-xl border-2 shrink border-neutral-700">
 						{/* center here */}

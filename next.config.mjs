@@ -5,6 +5,14 @@ import { config as dotenv } from 'dotenv';
 /** @type {import("next").NextConfig} */
 const config = {
 	env: dotenv(),
+	webpack: (config, options) => {
+		config.module.rules.push({
+			test: /\.wasm$/,
+			use: ['url-loader'],
+		});
+
+		return config;
+	},
 
 	images: {
 		remotePatterns: [
