@@ -13,7 +13,7 @@ export const AboutMe = () => {
 	const { rive, RiveComponent } = useRive({
 		src: 'wokign.riv',
 		animations: 'eyeSiding',
-		autoplay: false,
+		autoplay: true,
 		layout: new Layout({
 			fit: Fit.Cover,
 			alignment: Alignment.TopCenter,
@@ -33,8 +33,8 @@ export const AboutMe = () => {
 				{/* className="h-24 w-24 rounded-full border border-darkpink object-cover" */}
 
 				<RiveComponent
-					onMouseEnter={() => rive && rive.play()}
-					onMouseLeave={() => rive && rive.pause()}
+					onMouseEnter={() => rive && rive.pause()}
+					onMouseLeave={() => rive && rive.play()}
 					className="h-32 w-32 rounded-lg border-2 border-darkpink object-cover"
 				/>
 				<div className="space-y-1">
