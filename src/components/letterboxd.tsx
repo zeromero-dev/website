@@ -3,13 +3,15 @@ import { LetterboxdSchema } from '../hooks/useLetterboxd';
 import Link from 'next/link';
 import { IoRepeat } from 'react-icons/io5';
 
-export const Letterboxd = ({ items }: any) => {
-	// const { items } = useLetterboxd();
+export type LetterboxdProps = {
+	items?: LetterboxdSchema[];
+}
 
+export const Letterboxd = ({items}: LetterboxdProps) => {
+	// const { items } = useLetterboxd();
 	if (!items) {
 		return <div>Loading data...</div>;
 	}
-
 	return (
 		<div
 			className="relative overflow-x-auto scrollbar-hide flex h-full min-h-[1rem] 

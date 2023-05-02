@@ -18,10 +18,13 @@ import { getLetterboxd } from '../server/getLetterboxd';
 import { getLanyard } from '../server/lanyard';
 import { discordId, movieInitial } from '../utils/constants';
 import { formatList } from '../utils/lists';
+
 export interface Props {
 	lanyard: Data;
 	movies: LetterboxdSchema;
 }
+
+
 //commenting this breaks the build
 export const getStaticProps: GetStaticProps<Props> = async () => {
 	const lanyard = await getLanyard(discordId);
@@ -181,6 +184,7 @@ export default function Home(props: Props) {
 					</Link>
 				)}
 			</CardHoverEffect>
+			{/* @ts-ignore */}
 			<Letterboxd items={items} />
 			<Technologies />
 			<ConfigComponent />
