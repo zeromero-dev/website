@@ -1,42 +1,44 @@
 import clsx from 'clsx';
 import type { GetStaticProps } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
 import { HiOutlineExternalLink } from 'react-icons/hi';
 import { SiGithub, SiSpotify, SiTwitter } from 'react-icons/si';
 import type { Data } from 'use-lanyard';
 import { AboutMe } from '../components/aboutMe';
-import { ConfigComponent } from '../components/config';
+import { ConfigComponent } from '../components/configComponent';
 import { ContactForm } from '../components/contactForm';
-import { Discord } from '../components/discord';
+import { Discord } from '../components/discordComponent';
 import { CardHoverEffect, hoverClassName } from '../components/hover-card';
+import Letterboxd from '../components/letterboxd';
 import { Technologies } from '../components/technologies';
 import { Time } from '../components/time';
 import { useUpdatingLanyard } from '../hooks/lanyard';
-import bladen from '../images/bladen.png';
+import { LetterboxdSchema } from '../hooks/useLetterboxd';
+import { getLetterboxd } from '../server/getLetterboxd';
 import { getLanyard } from '../server/lanyard';
-import { discordId } from '../utils/constants';
+import { discordId, movieInitial } from '../utils/constants';
 import { formatList } from '../utils/lists';
-import Letterboxd from './Letterboxd';
 
 export interface Props {
 	lanyard: Data;
-	// location: string;
+	movies: LetterboxdSchema;
 }
+
+
 //commenting this breaks the build
 export const getStaticProps: GetStaticProps<Props> = async () => {
 	const lanyard = await getLanyard(discordId);
-
+	const movies = await getLetterboxd(movieInitial);
 	return {
 		//causes re-renders every 10 seconds
 		revalidate: 10,
-		props: { lanyard },
+		props: { lanyard, movies },
 	};
 };
 
 export default function Home(props: Props) {
 	const { data: lanyard } = useUpdatingLanyard(discordId, props.lanyard);
-
+	const items = props.movies ?? movieInitial;
 	const status = lanyard.discord_status ?? 'offline';
 
 	return (
@@ -74,12 +76,9 @@ export default function Home(props: Props) {
 						aria-hidden
 						className="pointer-events-none absolute inset-0 -z-20 transition duration-300 group-hover:blur-[3px]"
 					>
-						<Image
-							src={bladen}
-							alt="bacgkround image"
-							fill
-							style={{ objectFit: 'cover' }}
-							className="brightness-[1.4] "
+						<img
+							src="bladen.png"
+							className="inset-0 h-full w-full object-cover object-center brightness-[1.4] transition-all duration-500 will-change-[transform,_filter] group-hover:scale-[1.15]"
 						/>
 						<span className="absolute inset-0 bg-neutral-900/50" />
 					</span>
@@ -111,17 +110,20 @@ export default function Home(props: Props) {
 							hoverClassName,
 						)}
 					>
-						<span className="absolute inset-0 -z-10">
-							<Image
-								src={
-									'https://img.freepik.com/premium-photo/cute-anime-woman-looking-cityscape-by-night-time-sad-moody-manga-lofi-style-3d-rendering_717906-996.jpg?w=2000'
-								}
+						<span className="absolute bg-cover inset-0 -z-10 pointer-events-none transition duration-300 group-hover:blur-[3px]">
+							{/* <Image
+								src={playlist}
 								className={clsx(
 									'absolute inset-0 h-full w-full bg-black  object-cover object-center brightness-50 transition duration-500 group-hover:blur-[3px]',
 								)}
 								alt="Album cover art"
 								fill
 								style={{ objectFit: 'cover' }}
+							/> */}
+							<img
+								src="playlist.png"
+								alt="album cover art"
+								className="inset-0 h-full w-full bg-black object-cover object-center brightness-50 transition-all duration-500 will-change-[transform,_filter] group-hover:scale-[1.15] group-hover:brightness-[0.4]"
 							/>
 						</span>
 
@@ -136,7 +138,6 @@ export default function Home(props: Props) {
 									<span className="font-medium">my vibe is: </span>
 									moody
 								</h2>
-
 								<p className="text-sm">moody playlist</p>
 							</div>
 						</span>
@@ -149,11 +150,10 @@ export default function Home(props: Props) {
 						className={clsx('group relative flex h-full overflow-hidden rounded-2xl', hoverClassName)}
 					>
 						<span className="absolute inset-0 -z-10 transition duration-300 group-hover:blur-[3px]">
-							<Image
+							<img
 								src={`${lanyard.spotify.album_art_url}?cache=${Date.now()}`}
 								className="absolute inset-0 h-full w-full bg-black object-cover object-center brightness-50 transition-all duration-500 will-change-[transform,_filter] group-hover:scale-[1.15] group-hover:brightness-[0.4]"
 								alt="Album cover art"
-								fill
 							/>
 						</span>
 
@@ -184,7 +184,8 @@ export default function Home(props: Props) {
 					</Link>
 				)}
 			</CardHoverEffect>
-			<Letterboxd />
+			{/* @ts-ignore */}
+			<Letterboxd items={items} />
 			<Technologies />
 			<ConfigComponent />
 			<div className="col-span-6 space-y-4 rounded-2xl bg-darkpurple p-6 text-black md:col-span-6">

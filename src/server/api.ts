@@ -1,5 +1,5 @@
-import {createAPI} from 'nextkit';
-import {env} from './env';
+import { createAPI } from 'nextkit';
+import { env } from './env';
 
 export const api = createAPI({
 	async onError(_req, _res, error) {

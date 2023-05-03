@@ -1,8 +1,8 @@
-import {NextkitError} from 'nextkit';
-import {z} from 'zod';
-import {api} from '../../server/api';
-import {env} from '../../server/env';
-import {codeblock} from '../../utils/discord';
+import { NextkitError } from 'nextkit';
+import { z } from 'zod';
+import { api } from '../../server/api';
+import { env } from '../../server/env';
+import { codeblock } from '../../utils/discord';
 
 const schema = z.object({
 	email: z.string().email(),
@@ -11,7 +11,7 @@ const schema = z.object({
 });
 
 export default api({
-	async POST({req, res, ctx}) {
+	async POST({ req, res, ctx }) {
 		const body = schema.parse(req.body);
 
 		const ip = (req.headers['x-forwarded-for'] as string) ?? req.socket.remoteAddress ?? null;
@@ -24,14 +24,14 @@ export default api({
 
 		const result = await fetch(env.DISCORD_WEBHOOK, {
 			method: 'POST',
-			headers: {'Content-Type': 'application/json'},
+			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({
 				content: 'contact form submission',
 				embeds: [
 					{
 						description: body.body,
-						author: {name: body.email},
-						fields: [{name: 'ip', value: ip ?? 'unknown!?'}],
+						author: { name: body.email },
+						fields: [{ name: 'ip', value: ip ?? 'unknown!?' }],
 					},
 
 					{
@@ -47,7 +47,7 @@ export default api({
 		}
 
 		if (req.headers['content-type'] === 'application/json') {
-			return {sent: true};
+			return { sent: true };
 		}
 
 		return {

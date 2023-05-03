@@ -1,4 +1,4 @@
-import Document, {Head, Html, Main, NextScript} from 'next/document';
+import Document, { Head, Html, Main, NextScript } from 'next/document';
 
 export default class WebsiteDocument extends Document {
 	override render() {
@@ -8,7 +8,6 @@ export default class WebsiteDocument extends Document {
 				<body>
 					<Main />
 					<NextScript />
-					{/* <script async defer src="https://lab.alistair.cloud/latest.js" /> */}
 				</body>
 			</Html>
 		);

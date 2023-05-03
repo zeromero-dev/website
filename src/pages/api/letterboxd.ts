@@ -1,7 +1,7 @@
-import type {NextApiRequest, NextApiResponse} from 'next';
+import type { NextApiRequest, NextApiResponse } from 'next';
 // @ts-ignore but needs to fix in lib
 import letterboxd from 'letterboxd';
-import type {LetterboxdSchema} from '../../hooks/useLetterboxd';
+import type { LetterboxdSchema } from '../../hooks/useLetterboxd';
 //@ts-ignore
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 	try {
@@ -12,6 +12,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
 		res.status(200).json(data);
 	} catch {
-		res.status(500).json({message: 'Something went wrong'});
+		res.status(500).json({ message: 'Something went wrong' });
 	}
 }

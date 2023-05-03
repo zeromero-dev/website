@@ -1,9 +1,9 @@
-import {useEffect, useMemo, useState} from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import z from 'zod';
 
 export const letterboxdSchema = z.object({
 	type: z.string(),
-	date: z.object({published: z.number(), watched: z.number()}),
+	date: z.object({ published: z.number(), watched: z.number() }),
 	film: z.object({
 		title: z.string(),
 		year: z.string(),
@@ -14,7 +14,7 @@ export const letterboxdSchema = z.object({
 			large: z.string(),
 		}),
 	}),
-	rating: z.object({text: z.string(), score: z.number()}),
+	rating: z.object({ text: z.string(), score: z.number() }),
 	review: z.string(),
 	spoilers: z.boolean(),
 	isRewatch: z.boolean(),
@@ -36,5 +36,5 @@ export const useLetterboxd = () => {
 		fetchData();
 	}, []); //can't set to items because it will cause an infinite loop
 
-	return {items: memoizedItems};
+	return { items: memoizedItems };
 };

@@ -1,10 +1,18 @@
-import {config as dotenv} from 'dotenv';
+import { config as dotenv } from 'dotenv';
 
 // @ts-check
 
 /** @type {import("next").NextConfig} */
 const config = {
 	env: dotenv(),
+	webpack: (config, options) => {
+		config.module.rules.push({
+			test: /\.wasm$/,
+			use: ['url-loader'],
+		});
+
+		return config;
+	},
 
 	images: {
 		remotePatterns: [
@@ -12,23 +20,6 @@ const config = {
 				protocol: 'https',
 				hostname: 'i.scdn.co',
 				pathname: '/image/*',
-			},
-			{
-				protocol: 'https',
-				hostname: 'snapshot.apple-mapkit.com',
-				pathname: '/api/v1/snapshot',
-			},
-			{
-				protocol: 'https',
-				hostname: 'img.freepik.com',
-				port: '',
-				pathname: '/premium-photo/**',
-			},
-			{
-				protocol: 'https',
-				hostname: 'a.ltrbxd.com',
-				port: '',
-				pathname: '/resized/**',
 			},
 		],
 	},
