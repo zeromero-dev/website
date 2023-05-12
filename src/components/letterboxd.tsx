@@ -5,9 +5,9 @@ import { IoRepeat } from 'react-icons/io5';
 
 export type LetterboxdProps = {
 	items?: LetterboxdSchema[];
-}
+};
 
-export const Letterboxd = ({items}: LetterboxdProps) => {
+export const Letterboxd = ({ items }: LetterboxdProps) => {
 	// const { items } = useLetterboxd();
 	if (!items) {
 		return <div>Loading data...</div>;
