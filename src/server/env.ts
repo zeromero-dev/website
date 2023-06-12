@@ -8,7 +8,7 @@ export const env = envsafe({
 		default: 'localhost:3000',
 	}),
 	PROD_ENV: str({
-		default: 'website-git-ssr-zeromero-dev.vercel.app',
+		default: 'zeromero.xyz',
 	}),
 	API_KEY: str(),
 	DISCORD_WEBHOOK: url(),
