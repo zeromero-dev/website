@@ -1,7 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { env } from '../../server/env';
-// @ts-ignore but needs to fix in lib
-import letterboxd from 'letterboxd';
+import letterboxd from 'letterboxd-api';
 import type { LetterboxdSchema } from '../../hooks/useLetterboxd';
 //@ts-ignore
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -14,7 +13,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 	}
 	
 	try {
-		const items: LetterboxdSchema[] = await letterboxd('zeromero');
+		const items = await letterboxd('zeromero');
 		const data = items.slice(0, 3);
 
 		// res.setHeader('Cache-Control', 'public, max-age=300'); // 5 minutes (300 seconds)
