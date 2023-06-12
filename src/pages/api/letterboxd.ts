@@ -1,8 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { env } from '../../server/env';
 import letterboxd from 'letterboxd-api';
-import type { LetterboxdSchema } from '../../hooks/useLetterboxd';
-//@ts-ignore
+
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 	
 	const { headers, query } = req;
