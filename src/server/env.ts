@@ -10,6 +10,7 @@ export const env = envsafe({
 	PROD_ENV: str({
 		default: 'website-git-ssr-zeromero-dev.vercel.app',
 	}),
+	API_KEY: str(),
 	DISCORD_WEBHOOK: url(),
 	TURNSTILE_SECRET_KEY: str(),
 	DEFAULT_LOCATION: str({
