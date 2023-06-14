@@ -27,30 +27,25 @@ const config = {
 	async redirects() {
 		return [
 			{
-				source: '/outro',
-				destination: 'https://www.youtube.com/watch?v=HeF11Av9WuU',
+				source: '/hello',
+				destination: 'https://www.youtube.com/watch?v=pCKDrDvaOKE&ab_channel=Slyfer2812',
 				permanent: true,
 			},
 			{
-				source: '/desu',
-				destination: 'https://www.youtube.com/watch?v=HotGxCSas6A',
+				source: '/28:06:42:12',
+				destination: 'https://youtu.be/hnd-9ZfEmes?t=136',
 				permanent: true,
 			},
 			{
-				source: '/10',
-				destination: 'https://youtu.be/G5HcvgepK-I',
+				source: '/rickets',
+				destination: 'https://www.youtube.com/watch?v=5WC_tw2q7C8&pp=ygUQcmlja2V0cyBkZWZ0b25lcw%3D%3D',
 				permanent: true,
 			},
 			{
-				source: '/lulzsec',
-				destination: 'https://www.youtube.com/watch?v=DurOYPdXyF4',
+				source: '/tape',
+				destination: 'https://www.youtube.com/watch?v=f0pdwd0miqs&pp=ygUHc2V4dGFwZQ%3D%3D',
 				permanent: true,
-			},
-			{
-				source: '/wheels',
-				destination: 'https://www.youtube.com/watch?v=9xRFN2i1cwQ',
-				permanent: true,
-			},
+			}
 		];
 	},
 };
