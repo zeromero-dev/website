@@ -4,8 +4,8 @@ import letterboxd from 'letterboxd-api';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 	
-	const { headers, query } = req;
-	const apiKey = headers['api-key'] || query.apiKey;
+	const { headers } = req;
+	const apiKey = headers['x-api-key']
 	if (apiKey !== env.API_KEY) {
 		res.status(401).json({ message: 'HAHAHA YOU SILLY GOOSE YOU UNDERESTIMATED MY POWER' });
 		return;
