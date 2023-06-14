@@ -45,7 +45,7 @@ const config = {
 				source: '/tape',
 				destination: 'https://www.youtube.com/watch?v=f0pdwd0miqs&pp=ygUHc2V4dGFwZQ%3D%3D',
 				permanent: true,
-			}
+			},
 		];
 	},
 };

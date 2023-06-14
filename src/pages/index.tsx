@@ -24,7 +24,6 @@ export interface Props {
 	movies: LetterboxdSchema;
 }
 
-
 //commenting this breaks the build
 export const getStaticProps: GetStaticProps<Props> = async () => {
 	const lanyard = await getLanyard(discordId);

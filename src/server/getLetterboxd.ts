@@ -3,11 +3,10 @@ import { env } from './env';
 
 export async function getLetterboxd(movieInitial: LetterboxdSchema[]): Promise<LetterboxdSchema> {
 	try {
-		const letterboxd = await fetch(`http://${env.PROD_ENV}/api/letterboxd`,
-		{
+		const letterboxd = await fetch(`http://${env.PROD_ENV}/api/letterboxd`, {
 			headers: {
 				'x-api-key': env.API_KEY,
-			}
+			},
 		});
 		const jsonData: LetterboxdSchema = await letterboxd.json();
 		return jsonData;
