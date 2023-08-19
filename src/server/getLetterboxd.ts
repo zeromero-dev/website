@@ -1,4 +1,4 @@
-import { LetterboxdSchema } from '../hooks/useLetterboxd';
+import { LetterboxdSchema, letterboxdSchema } from '../hooks/useLetterboxd';
 import { env } from './env';
 
 export async function getLetterboxd(): Promise<LetterboxdSchema[] | null> {
@@ -13,7 +13,12 @@ export async function getLetterboxd(): Promise<LetterboxdSchema[] | null> {
 
 		const movieData: LetterboxdSchema[] = await letterboxd.json();
 		
-		return movieData;
+		const validatedData = letterboxdSchema.array().safeParse(movieData);
+		if (!validatedData.success) {
+			throw new Error('Invalid Letterboxd data');
+		}
+
+		return validatedData.data;
 
 	} catch (error) {
 		// eslint-disable-next-line no-console
