@@ -25,4 +25,5 @@ export const daysUntilBirthday = RelativeTimeFormatter.formatToParts(
 	),
 	'day',
 )[1]!.value.toString();
-export const movieInitial = [];
+
+

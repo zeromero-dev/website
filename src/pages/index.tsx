@@ -16,28 +16,29 @@ import { useUpdatingLanyard } from '../hooks/lanyard';
 import { LetterboxdSchema } from '../hooks/useLetterboxd';
 import { getLetterboxd } from '../server/getLetterboxd';
 import { getLanyard } from '../server/lanyard';
-import { discordId, movieInitial } from '../utils/constants';
+import { discordId } from '../utils/constants';
 import { formatList } from '../utils/lists';
 
 export interface Props {
 	lanyard: Data;
-	movies: LetterboxdSchema;
+	movies: LetterboxdSchema[] | null;
 }
 
 //commenting this breaks the build
 export const getStaticProps: GetStaticProps<Props> = async () => {
 	const lanyard = await getLanyard(discordId);
-	const movies = await getLetterboxd(movieInitial);
+	const movies = await getLetterboxd()
+
 	return {
 		//causes re-renders every 10 seconds
 		revalidate: 10,
-		props: { lanyard, movies },
+		props: { lanyard, movies }
 	};
 };
 
 export default function Home(props: Props) {
 	const { data: lanyard } = useUpdatingLanyard(discordId, props.lanyard);
-	const items = props.movies ?? movieInitial;
+	const items = props.movies ?? [];
 	const status = lanyard.discord_status ?? 'offline';
 
 	return (
@@ -183,7 +184,6 @@ export default function Home(props: Props) {
 					</Link>
 				)}
 			</CardHoverEffect>
-			{/* @ts-ignore */}
 			<Letterboxd items={items} />
 			<Technologies />
 			<ConfigComponent />
