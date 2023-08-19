@@ -14,5 +14,5 @@
 		"@next/next/no-img-element": "off"
 	},
 	"parser": "@typescript-eslint/parser",
-	"plugins": ["react", "react-hooks"]
+	"plugins": ["react", "react-hooks"],
 }
